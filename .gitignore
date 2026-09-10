@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# R
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Temporary files
+*.log
+*.tmp
+*~
+
+# Raw/source data
+data/source/*
+!data/source/.gitkeep
+
+# FASTQ demonstration data
+fastq-demo/data/
+fastq-demo/results/
+
+# Quarto generated output
+reports/_freeze/
+reports/.quarto/
+
+# renv local library/cache
+renv/library/
+renv/staging/
+renv/python/
