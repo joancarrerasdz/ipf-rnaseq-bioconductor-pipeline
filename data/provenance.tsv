@@ -1,0 +1,3 @@
+accession	file	role	source_repository	source_url	download_date	size_bytes	sha256
+GSE213001	GSE213001_Entrez-IDs-Lung-IPF-GRCh38-p12-raw_counts.csv.gz	raw_gene_counts	NCBI_GEO	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE213nnn/GSE213001/suppl/GSE213001_Entrez-IDs-Lung-IPF-GRCh38-p12-raw_counts.csv.gz	2026-09-10	3529773	832ba7db504d0fb34405833b5c271b364b9c663970974b70d19a0d78232e3bef
+GSE213001	GSE213001_series_matrix.txt.gz	sample_metadata	NCBI_GEO	https://ftp.ncbi.nlm.nih.gov/geo/series/GSE213nnn/GSE213001/matrix/GSE213001_series_matrix.txt.gz	2026-09-10	12752	b76293ab154b4adc21cd6cd840b71323f7849c586bea9ca1efff2f0053af71c8
