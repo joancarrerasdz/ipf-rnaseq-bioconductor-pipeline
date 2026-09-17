@@ -314,3 +314,174 @@ The following decisions remain intentionally unresolved:
 - exact GSEA and/or over-representation workflow
 
 These items will be resolved at the appropriate downstream stage and recorded in this decision log before they affect formal results.
+
+---
+
+## 2026-09-17 — W3 metadata and library-level QC completed without sample exclusion
+
+**Status:** ACCEPTED
+
+Metadata and library-level QC were completed before filtering, normalization, PCA/MDS or differential-expression analysis.
+
+The complete dataset remains:
+
+- 139 samples
+- 46 donors
+- 15,065 genes
+
+No sample was excluded during W3.
+
+The QC workflow is descriptive and does not automatically remove observations.
+
+---
+
+## 2026-09-17 — Technical screening flags are a watchlist, not exclusion criteria
+
+**Status:** ACCEPTED
+
+Robust screening identified six samples with at least one technical flag:
+
+- `ALF009B`
+- `ALF012F`
+- `ALF030A`
+- `ALF048D`
+- `ALF017A`
+- `ALF024A`
+
+The flags were based on extreme values in library size, detected genes and/or zero-count fraction.
+
+These samples remain in the dataset.
+
+Within-donor review did not provide sufficiently strong independent evidence to justify exclusion.
+
+In particular, `ALF009B` and `ALF012F` showed elevated zero-count fractions relative to their donor medians, but only modest reductions in detected genes and no extreme within-donor library-size deficit.
+
+Therefore, all six samples are retained as a QC watchlist for later PCA/MDS and model diagnostics.
+
+---
+
+## 2026-09-17 — Low RIN is not an automatic exclusion criterion
+
+**Status:** ACCEPTED
+
+RIN is available for all 139 samples.
+
+Seven samples have RIN < 5.
+
+However, sample-level Spearman correlations between RIN and technical metrics were weak:
+
+- RIN vs detected genes: approximately -0.05
+- RIN vs zero-count fraction: approximately 0.05
+- RIN vs log10 library size: approximately 0.14
+
+Only two of the seven low-RIN samples were identified by the robust technical screen.
+
+Therefore, no fixed RIN cutoff will be used as an automatic exclusion rule.
+
+RIN will remain available for QC interpretation and possible sensitivity analysis.
+
+---
+
+## 2026-09-17 — Library-size variation does not currently justify exclusion
+
+**Status:** ACCEPTED
+
+Raw-count library sizes range approximately from 7.6 million to 19.8 million counts.
+
+The disease groups show substantial overlap in library-size distributions.
+
+The lowest-depth sample (`ALF017A`) and highest-depth sample (`ALF024A`) do not show sufficient independent evidence of technical failure to justify removal.
+
+Library-size differences will instead be addressed through the downstream normalization workflow.
+
+---
+
+## 2026-09-17 — Age is an important candidate confounder
+
+**Status:** PRE-SPECIFIED FOR SENSITIVITY ANALYSIS
+
+Age is constant within donor.
+
+At donor level in the primary IPF-vs-NDC cohort:
+
+- IPF: 20 donors, mean age 62.55 years, median 62.5 years, range 43–73
+- NDC: 13 donors with known age, mean age 48.0 years, median 44 years, range 28–69
+- one NDC donor (`ALF017`) has missing age
+
+The observed age distributions therefore differ substantially between disease groups.
+
+Age will not replace the pre-specified primary model.
+
+The planned primary model remains conceptually:
+
+    expression ~ diseasegroup + lunglocation
+
+with donor-aware repeated-measures handling.
+
+A sensitivity model including age will be evaluated after filtering, normalization and model diagnostics.
+
+---
+
+## 2026-09-17 — Gender does not currently require forced adjustment
+
+**Status:** ACCEPTED
+
+Gender is constant within donor and complete in the primary cohort.
+
+At donor level:
+
+- IPF: 7 female / 13 male
+- NDC: 6 female / 8 male
+
+No strong imbalance was identified that currently requires gender to be included automatically in the primary model.
+
+Gender remains available for descriptive and sensitivity analyses if later diagnostics justify its use.
+
+---
+
+## 2026-09-17 — Clinical variables with substantial or structural missingness are not primary covariates
+
+**Status:** ACCEPTED
+
+The complete metadata show substantial missingness for:
+
+- corrected DLCO % predicted
+- DLCO % predicted
+- FVC % predicted
+- disease severity
+- smoking status
+
+Disease severity is structurally unavailable for NDC controls in the primary cohort.
+
+These variables will therefore not be added automatically to the primary IPF-vs-NDC model.
+
+They may be used in explicitly labeled secondary or exploratory analyses when scientifically appropriate.
+
+---
+
+## 2026-09-17 — Processing date is retained as a technical QC variable
+
+**Status:** ACCEPTED
+
+Processing date is complete and constant within donor.
+
+All three observed processing dates contain both IPF and NDC samples and are therefore not perfectly confounded with disease group.
+
+Processing date will not be added automatically to the primary model.
+
+It will be evaluated against PCA/MDS and other downstream QC diagnostics before any adjustment decision is made.
+
+---
+
+## 2026-09-17 — W3 QC figures accepted for the repository
+
+**Status:** ACCEPTED
+
+The following W3 figures passed visual QA:
+
+- `figures/qc/metadata_missingness.png`
+- `figures/qc/library_size_by_disease.png`
+- `figures/qc/rin_by_disease.png`
+- `figures/qc/donor_age_ipf_vs_ndc.png`
+
+These figures document metadata completeness, raw library-size distributions, RIN distributions and donor-level age imbalance before filtering and normalization.
