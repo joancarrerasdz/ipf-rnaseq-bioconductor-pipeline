@@ -485,3 +485,215 @@ The following W3 figures passed visual QA:
 - `figures/qc/donor_age_ipf_vs_ndc.png`
 
 These figures document metadata completeness, raw library-size distributions, RIN distributions and donor-level age imbalance before filtering and normalization.
+
+---
+
+## 2026-09-24 — W4 low-count filtering rule frozen
+
+**Status:** ACCEPTED
+
+Low-count filtering is defined using `edgeR::filterByExpr()` on the
+pre-specified primary analysis cohort.
+
+The filtering cohort contains:
+
+- 101 samples
+- 34 donors
+- 61 IPF samples
+- 40 NDC samples
+- only samples with known lung region
+
+The filtering design is:
+
+    ~ diseasegroup + lunglocation
+
+The donor identifier is not introduced as a fixed effect during filtering.
+Within-donor correlation will be handled during downstream limma/voom model
+fitting.
+
+The frozen `filterByExpr()` settings are:
+
+- `min.count = 10`
+- `min.total.count = 15`
+- `large.n = 10`
+- `min.prop = 0.70`
+
+Filtering result:
+
+- input genes: 15,065
+- retained genes: 15,012
+- removed genes: 53
+- retention: 99.65%
+
+The relatively small number of removed genes is accepted and will not be
+increased by introducing an arbitrary more aggressive threshold.
+
+Audit of the removed genes confirmed that they are concentrated toward the
+low-expression end of the dataset. Removed genes reached CPM >= 1 in only
+7–19 primary-cohort samples, and their maximum-CPM distribution was
+substantially lower than that of retained genes.
+
+The filtering decision was made before normalization, PCA/MDS or formal
+differential-expression testing.
+
+---
+
+## 2026-09-24 — W4 TMM normalization accepted
+
+**Status:** ACCEPTED
+
+TMM normalization is performed with `edgeR::calcNormFactors()` after the
+frozen low-count filtering step.
+
+Normalization factors are calculated independently from the retained raw
+counts. GEO-reported normalization factors are preserved only as source
+metadata and are not reused for the primary analysis.
+
+Across the 101 primary-cohort samples, TMM factors were:
+
+- minimum: approximately 0.417
+- first quartile: approximately 0.976
+- median: approximately 1.014
+- mean: approximately 1.005
+- third quartile: approximately 1.048
+- maximum: approximately 1.154
+
+The product of normalization factors was 1, as expected after scaling.
+
+The lowest TMM factor belongs to `ALF009B` (NDC, Base), which was already
+included in the W3 technical watchlist.
+
+A targeted composition audit showed that `ALF009B` has exceptionally strong
+library composition bias:
+
+- most abundant gene: approximately 12.1% of the library
+- 10 most abundant genes: approximately 60.0% of the library
+- only 7 genes are required to account for 50% of all counts
+
+Across all 101 samples, the corresponding median values were approximately:
+
+- top-1 gene fraction: 1.68%
+- top-10 gene fraction: 8.51%
+- genes required to account for 50% of counts: 915
+
+TMM factors were negatively associated with library concentration:
+
+- Spearman TMM vs top-1 fraction: approximately -0.44
+- Spearman TMM vs top-10 fraction: approximately -0.60
+
+The extreme factor is therefore consistent with a strong composition effect
+rather than, by itself, evidence of sample failure.
+
+`ALF009B` remains in the analysis and remains flagged for downstream
+PCA/MDS and model-diagnostic review.
+
+No sample is excluded based solely on its TMM normalization factor.
+
+---
+
+## 2026-09-24 — W4 filtering, normalization and ordination decisions
+
+**Status:** ACCEPTED / FROZEN before differential-expression testing
+
+### Low-count filtering
+
+The primary IPF-vs-NDC cohort was filtered using `edgeR::filterByExpr()` with the pre-specified disease-group and lung-location design.
+
+The retained expression matrix contains:
+
+- 15,012 genes
+- 101 samples
+- 34 donors
+
+The filtering decision was made before differential-expression testing.
+
+### Normalization
+
+TMM normalization was performed independently from the raw counts using edgeR.
+
+GEO-reported normalization factors were retained only for provenance and were not reused.
+
+No sample was excluded on the basis of its TMM normalization factor.
+
+### PCA / MDS quality-control assessment
+
+PCA of TMM-normalized logCPM values showed:
+
+- PC1: 31.11% variance explained
+- PC2: 13.95% variance explained
+
+PCA and edgeR MDS showed concordant large-scale structure.
+
+Disease group was strongly associated with donor-level ordination:
+
+- PC1 disease-group R2: 0.773
+- PC2 disease-group R2: 0.594
+
+No sample was excluded on the basis of PCA or MDS position.
+
+Technical-watchlist samples remain included.
+
+### Age assessment
+
+Age showed measurable association with ordination:
+
+- PC1 age-only R2: 0.213
+- PC2 age-only R2: 0.298
+
+However, disease group remained strongly associated with ordination after accounting for age:
+
+- PC1 partial R2 for disease after age: 0.702
+- PC2 partial R2 for disease after age: 0.426
+
+The primary model will therefore retain the pre-specified disease and lung-region structure.
+
+Age will be evaluated in a pre-specified secondary sensitivity analysis.
+
+This avoids redefining the primary analysis after exploratory ordination and avoids excluding an otherwise valid donor solely because age is unavailable.
+
+### Lung region
+
+Lung region showed substantial within-donor association with ordination:
+
+- PC1 partial R2: 0.237
+- PC2 partial R2: 0.212
+
+Lung region therefore remains a required adjustment variable in the primary model.
+
+### RIN
+
+Within-donor RIN association with the first two PCs was negligible:
+
+- PC1 partial R2: 0.006
+- PC2 partial R2: 0.001
+
+RIN will not be added to the primary model solely on the basis of this QC screen.
+
+### Processing date
+
+Processing date showed little sample-level association with the first two PCs:
+
+- PC1 R2: 0.009
+- PC2 R2: 0.054
+
+A within-donor processing-date effect is not estimable because processing date does not provide sufficient within-donor variation.
+
+Processing date will not be included in the primary model based on the current evidence.
+
+### Frozen primary analysis framework
+
+Primary biological contrast:
+
+`IPF vs NDC`
+
+Primary fixed-effects structure:
+
+`~ diseasegroup + lunglocation`
+
+Repeated samples from the same donor will be handled explicitly through donor-aware correlation modelling.
+
+Pre-specified sensitivity model:
+
+`~ diseasegroup + lunglocation + age`
+
+No differential-expression results were inspected when these decisions were made.

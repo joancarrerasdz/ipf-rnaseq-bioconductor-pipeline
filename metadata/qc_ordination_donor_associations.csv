@@ -1,0 +1,7 @@
+"metric","value"
+"PC1_disease_R2_donor_level",0.772909193958117
+"PC2_disease_R2_donor_level",0.594085079928325
+"PC1_age_R2_donor_level",0.212766967768888
+"PC2_age_R2_donor_level",0.298376143207344
+"PC1_disease_partial_R2_after_age",0.701572913006465
+"PC2_disease_partial_R2_after_age",0.425994414356347

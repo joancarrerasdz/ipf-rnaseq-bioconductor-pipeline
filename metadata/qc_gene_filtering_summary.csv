@@ -1,0 +1,11 @@
+"metric","value"
+"primary_samples",101
+"primary_donors",34
+"input_genes",15065
+"retained_genes",15012
+"removed_genes",53
+"retained_percent",99.65
+"min_count",10
+"min_total_count",15
+"large_n",10
+"min_prop",0.7

@@ -1,0 +1,13 @@
+"metric","value"
+"samples",101
+"retained_genes",15012
+"tmm_factor_min",0.416947874965069
+"tmm_factor_q1",0.975931356308977
+"tmm_factor_median",1.01400138072717
+"tmm_factor_mean",1.00517344297766
+"tmm_factor_q3",1.04754948091744
+"tmm_factor_max",1.15407753293345
+"tmm_factor_product",1
+"retained_count_fraction_min",0.999880223522233
+"retained_count_fraction_median",0.999981949766009
+"retained_count_fraction_max",0.999997754213825
