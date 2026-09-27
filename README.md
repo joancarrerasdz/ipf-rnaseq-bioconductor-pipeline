@@ -56,8 +56,21 @@ Package versions and the executable workflow will be added progressively as the 
 
 ## Status
 
-**Development / setup phase**
+**W4 complete — filtering, normalization and ordination QC frozen before differential-expression testing.**
 
-Current focus: dataset provenance, metadata structure, experimental design and repository initialization.
+Current analytical state:
 
-No differential-expression results are reported at this stage.
+- primary comparison: **IPF vs NDC**
+- primary cohort: **101 samples / 34 donors**
+- retained genes after low-count filtering: **15,012 / 15,065**
+- normalization: **TMM**
+- exploratory QC: **PCA + edgeR MDS completed**
+- technical watchlist reviewed; **no samples excluded**
+- primary fixed-effects structure: `~ diseasegroup + lunglocation`
+- age reserved for a pre-specified sensitivity analysis
+- repeated samples will be handled explicitly with donor-aware correlation modelling
+
+No formal differential-expression testing has been performed.
+
+The immediate next focus is reproducibility hardening with `renv` and `targets`,
+followed by preparation of the donor-aware differential-expression workflow.

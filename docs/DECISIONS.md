@@ -299,21 +299,15 @@ Any QC-based exclusion must be supported by independently defined technical or d
 
 ---
 
-# Open decisions
+# Open decisions — historical register
 
-The following decisions remain intentionally unresolved:
+The list originally created during study-design pre-specification is
+superseded by the dated decisions below.
 
-- final low-count filtering rule
-- normalization method and parameters
-- final donor-correlation / repeated-measures implementation
-- treatment of technical or biological covariates beyond lung region
-- any additional QC-based sample exclusions
-- exact Ensembl-to-gene annotation strategy
-- handling of any unmapped or ambiguous gene identifiers
-- enrichment gene universe
-- exact GSEA and/or over-representation workflow
+Low-count filtering, normalization, QC-based sample retention and the
+primary covariate framework were subsequently resolved and frozen during W4.
 
-These items will be resolved at the appropriate downstream stage and recorded in this decision log before they affect formal results.
+Current unresolved decisions are listed at the end of this document.
 
 ---
 
@@ -697,3 +691,32 @@ Pre-specified sensitivity model:
 `~ diseasegroup + lunglocation + age`
 
 No differential-expression results were inspected when these decisions were made.
+
+---
+
+## 2026-09-27 — Current open decisions after W4
+
+**Status:** ACTIVE REGISTER
+
+The following methodological decisions remain intentionally unresolved
+after completion of W4:
+
+- final donor-correlation / repeated-measures implementation for formal
+  differential-expression modelling
+- exact Ensembl-to-gene annotation strategy and annotation version
+- handling of unmapped or ambiguous gene identifiers
+- enrichment gene universe
+- exact GSEA and/or over-representation workflow
+
+The following items are no longer open:
+
+- low-count filtering rule — frozen on 2026-09-24
+- normalization method and parameters — TMM accepted on 2026-09-24
+- W4 QC-based sample exclusions — no samples excluded
+- primary fixed-effects structure — frozen as
+  `~ diseasegroup + lunglocation`
+- age — pre-specified sensitivity model
+- RIN and processing date — not added to the primary model based on W4 QC
+
+No formal differential-expression results had been inspected when these
+decisions were frozen.
