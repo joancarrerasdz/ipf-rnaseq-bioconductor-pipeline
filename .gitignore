@@ -28,3 +28,6 @@ reports/.quarto/
 renv/library/
 renv/staging/
 renv/python/
+
+# targets pipeline store
+_targets/
