@@ -1,0 +1,9 @@
+"metric","value"
+"tested_genes",15012
+"FDR_lt_0.05",7898
+"FDR_positive_logFC",3964
+"FDR_negative_logFC",3934
+"primary_logFC_median",-0.00398643636513094
+"primary_logFC_IQR",0.516338713072873
+"pearson_age_concordance",0.975306507964936
+"spearman_age_concordance",0.959261978907278
