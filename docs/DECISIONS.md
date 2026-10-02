@@ -720,3 +720,58 @@ The following items are no longer open:
 
 No formal differential-expression results had been inspected when these
 decisions were frozen.
+
+---
+
+## 2026-10-02 — W5 donor-aware differential-expression implementation
+
+**Status:** ACCEPTED / FROZEN BEFORE FORMAL DE
+
+The primary differential-expression framework was frozen before inspection of
+formal gene-level DE results.
+
+### Primary analysis
+
+- biological contrast: **IPF vs NDC**
+- primary cohort: **101 samples / 34 donors**
+- retained genes after the frozen W4 low-count filter: **15,012**
+- normalization: **TMM**
+- fixed-effects design: `~ diseasegroup + lunglocation`
+- reference disease group: **NDC**
+- reference lung region: **Base**
+- primary coefficient: `diseasegroupIPF`
+- repeated-measures blocking unit: `donorid`
+
+Repeated samples from the same donor will be handled using the
+`limma-voom` / `duplicateCorrelation` framework.
+
+A two-pass donor-correlation dry run produced:
+
+- first consensus correlation: **0.315821**
+- second consensus correlation: **0.315828**
+- absolute change: approximately **6.46e-06**
+
+The near-identical estimates support a stable consensus within-donor
+correlation estimate.
+
+The final primary model will therefore use the donor-aware voom object and
+the second consensus correlation estimate for formal model fitting.
+
+### Pre-specified sensitivity analysis
+
+Age remains reserved for the pre-specified sensitivity model:
+
+`~ diseasegroup + lunglocation + age`
+
+The single donor with missing age is `ALF017`, corresponding to two samples.
+The age-complete sensitivity cohort therefore contains:
+
+- **99 samples**
+- **33 donors**
+
+RIN and processing date are not added to the primary model, consistent with
+the W4 QC decisions.
+
+No formal `lmFit`, empirical-Bayes moderation, multiple-testing results or
+gene-level differential-expression tables had been inspected when this
+implementation was frozen.
