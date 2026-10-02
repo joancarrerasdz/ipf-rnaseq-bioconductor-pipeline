@@ -975,3 +975,101 @@ The comparison of the reduced and age-adjusted models on the identical
 
 No age-adjusted gene-level results had been generated when this sensitivity
 framework was frozen.
+
+---
+
+## 2026-10-02 — W5 age-sensitivity results
+
+**Status:** COMPLETED / POST-INFERENCE SENSITIVITY RECORD
+
+The pre-specified age sensitivity analysis was executed on the identical
+age-complete primary cohort.
+
+### Sensitivity cohort
+
+- samples: **99**
+- donors: **33**
+- missing-age donor removed: `ALF017`
+- frozen tested gene universe: **15,012 genes**
+
+TMM normalization and within-donor consensus correlation were re-estimated
+within this cohort.
+
+### Same-cohort models
+
+Reduced model:
+
+`~ diseasegroup + lunglocation`
+
+Age-adjusted model:
+
+`~ diseasegroup + lunglocation + age`
+
+The coefficient of interest remained `diseasegroupIPF` in both models.
+
+Final within-donor consensus correlations were:
+
+- reduced model: **0.3082255**
+- age-adjusted model: **0.3089274**
+
+### Effect-estimate concordance
+
+Comparison of the disease coefficient across all 15,012 genes produced:
+
+- Pearson logFC correlation: **0.975307**
+- Spearman logFC correlation: **0.959262**
+- direction concordance: **92.14%**
+- median absolute logFC change: **0.061244**
+
+These results indicate strong overall stability of the estimated IPF-vs-NDC
+effect after adjustment for age.
+
+### Multiple-testing sensitivity
+
+FDR < 0.05:
+
+- reduced model: **7,662 genes**
+- age-adjusted model: **5,357 genes**
+- significant in both models: **5,131 genes**
+- significant only before age adjustment: **2,531 genes**
+- significant only after age adjustment: **226 genes**
+- FDR-set Jaccard index: **0.650482**
+
+Age adjustment therefore materially reduced the number of genes meeting
+the FDR threshold, while most genes significant after age adjustment were
+also significant in the reduced model.
+
+### Large-effect concordance
+
+For genes with |logFC| >= 1 in either sensitivity model:
+
+- genes: **2,068**
+- direction concordance: **99.90%**
+
+For genes with |logFC| >= 1 in both models:
+
+- genes: **1,651**
+- direction concordance: **100.00%**
+
+Thus, the largest estimated disease effects are highly stable in direction
+after age adjustment.
+
+### Interpretation for downstream analysis
+
+Age is retained as an important pre-specified sensitivity covariate because
+it materially affects statistical significance for a substantial subset of
+genes.
+
+However, the high genome-wide logFC correlations, small median effect-size
+change and near-perfect direction concordance among large effects indicate
+that the broad IPF-vs-NDC transcriptomic signal is not explained solely by
+age imbalance.
+
+The frozen primary analysis remains the primary model:
+
+`~ diseasegroup + lunglocation`
+
+The age-adjusted model remains a pre-specified sensitivity analysis and
+will be used when assessing robustness of downstream biological findings.
+
+No gene-level biological interpretation was used to alter either model.
