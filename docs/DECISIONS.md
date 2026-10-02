@@ -884,3 +884,94 @@ pre-specified age sensitivity analysis.
 
 No gene-level ranking or biological interpretation was used to modify the
 primary analysis.
+
+---
+
+## 2026-10-02 — W5 age-sensitivity implementation
+
+**Status:** ACCEPTED / FROZEN BEFORE AGE-ADJUSTED RESULTS
+
+The pre-specified age sensitivity analysis will be performed on the
+age-complete subset of the primary cohort.
+
+### Sensitivity cohort
+
+The donor with missing age is `ALF017`, corresponding to two samples.
+
+The sensitivity cohort therefore contains:
+
+- **99 samples**
+- **33 donors**
+
+The frozen W4 low-count filtering decision will be retained unchanged:
+
+- genes evaluated: **15,065**
+- genes retained: **15,012**
+- genes removed: **53**
+
+No gene filtering rule will be re-estimated using the sensitivity results.
+
+### Same-cohort comparison
+
+To separate the effect of age adjustment from the effect of removing the
+two samples with missing age, two models will be fitted to exactly the same
+99-sample cohort.
+
+Reduced sensitivity model:
+
+`~ diseasegroup + lunglocation`
+
+Age-adjusted sensitivity model:
+
+`~ diseasegroup + lunglocation + age`
+
+The primary coefficient in both models remains:
+
+`diseasegroupIPF`
+
+### Normalization and repeated measurements
+
+TMM normalization will be recalculated within the 99-sample sensitivity
+cohort.
+
+The within-donor consensus correlation will also be estimated separately
+for each sensitivity design using the same two-pass
+`voom` / `duplicateCorrelation` procedure used for the primary analysis.
+
+Repeated measurements will continue to use:
+
+`block = donorid`
+
+### Inference
+
+Both sensitivity models will use:
+
+`eBayes(..., robust = TRUE, trend = FALSE)`
+
+and Benjamini-Hochberg multiple-testing correction.
+
+The significance criterion remains:
+
+`FDR < 0.05`
+
+No absolute logFC threshold will be introduced as a significance criterion.
+
+### Concordance assessment
+
+Age robustness will be assessed using the same 15,012 genes and will include:
+
+- Pearson correlation of disease logFC estimates
+- Spearman correlation of disease logFC estimates
+- concordance of logFC direction
+- median absolute change in disease logFC
+- number of FDR-significant genes in each model
+- overlap of FDR-significant genes
+- genes significant only before age adjustment
+- genes significant only after age adjustment
+- concordance among genes with |logFC| >= 1
+
+The comparison of the reduced and age-adjusted models on the identical
+99-sample cohort will be the primary assessment of the impact of age.
+
+No age-adjusted gene-level results had been generated when this sensitivity
+framework was frozen.
