@@ -775,3 +775,71 @@ the W4 QC decisions.
 No formal `lmFit`, empirical-Bayes moderation, multiple-testing results or
 gene-level differential-expression tables had been inspected when this
 implementation was frozen.
+
+---
+
+## 2026-10-02 — W5 formal-inference specification
+
+**Status:** ACCEPTED / FROZEN BEFORE FIRST FORMAL DE TEST
+
+The exact inferential settings for the primary IPF-vs-NDC analysis were
+specified before execution of `lmFit()` or `eBayes()`.
+
+### Model fitting
+
+The final donor-aware voom object from the two-pass correlation workflow
+will be fitted with:
+
+`lmFit(v2, design, block = donorid, correlation = rho2)`
+
+where `rho2` is the second consensus correlation estimate obtained from
+`duplicateCorrelation()`.
+
+The frozen fixed-effects design is:
+
+`~ diseasegroup + lunglocation`
+
+The primary coefficient is:
+
+`diseasegroupIPF`
+
+Therefore:
+
+- positive logFC = higher expression in IPF relative to NDC
+- negative logFC = lower expression in IPF relative to NDC
+
+with lung region adjusted in the model.
+
+### Empirical-Bayes moderation
+
+Empirical-Bayes moderation will use:
+
+`eBayes(fit, robust = TRUE, trend = FALSE)`
+
+Robust moderation is pre-specified to reduce sensitivity to genes with
+atypical residual variances. Mean-variance dependence is already handled
+through voom weights, therefore `trend = FALSE`.
+
+### Multiple testing
+
+P-values for the primary coefficient will be corrected using the
+Benjamini-Hochberg procedure.
+
+The primary multiplicity criterion is:
+
+`FDR < 0.05`
+
+No minimum absolute log-fold-change threshold is used to define primary
+statistical significance. Effect sizes will be reported separately and
+will not be selected post hoc to alter significance calls.
+
+`treat()` is not part of the primary analysis.
+
+### Reporting order
+
+The complete gene-level result table will retain all 15,012 tested genes.
+Initial validation will focus on model-level and multiplicity-level
+summaries before biological interpretation of individual genes.
+
+No formal gene-level DE results had been generated when these settings
+were frozen.
