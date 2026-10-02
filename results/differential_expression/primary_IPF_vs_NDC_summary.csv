@@ -1,0 +1,13 @@
+"metric","value"
+"tested_genes",15012
+"primary_samples",101
+"primary_donors",34
+"consensus_correlation",0.315827639231605
+"raw_p_lt_0.05",8679
+"fdr_lt_0.05",7898
+"fdr_lt_0.05_logFC_positive",3964
+"fdr_lt_0.05_logFC_negative",3934
+"abs_logFC_ge_1",1884
+"fdr_lt_0.05_and_abs_logFC_ge_1",1861
+"min_raw_p",1.09866598401914e-28
+"min_fdr",1.64931737520953e-24

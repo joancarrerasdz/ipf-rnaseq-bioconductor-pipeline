@@ -843,3 +843,44 @@ summaries before biological interpretation of individual genes.
 
 No formal gene-level DE results had been generated when these settings
 were frozen.
+
+---
+
+## 2026-10-02 — W5 primary donor-aware DE execution
+
+**Status:** COMPLETED / POST-INFERENCE RECORD
+
+The pre-specified primary donor-aware differential-expression model was
+executed after the analytical framework and inferential settings had been
+frozen and committed.
+
+### Primary model
+
+- contrast: **IPF vs NDC**
+- tested genes: **15,012**
+- samples: **101**
+- donors: **34**
+- fixed effects: `~ diseasegroup + lunglocation`
+- repeated-measures block: `donorid`
+- final consensus within-donor correlation: **0.3158276**
+- empirical-Bayes moderation: `robust = TRUE, trend = FALSE`
+- multiple-testing adjustment: Benjamini-Hochberg
+
+### Global inferential results
+
+- raw P < 0.05: **8,679 genes**
+- FDR < 0.05: **7,898 genes**
+- FDR < 0.05 with positive logFC: **3,964**
+- FDR < 0.05 with negative logFC: **3,934**
+- |logFC| >= 1: **1,884 genes**
+- FDR < 0.05 and |logFC| >= 1: **1,861 genes**
+- minimum raw P: **1.099e-28**
+- minimum FDR: **1.649e-24**
+
+The large number of FDR-significant genes indicates broad transcriptomic
+separation between the primary disease groups. Biological interpretation
+of individual genes is intentionally deferred until completion of the
+pre-specified age sensitivity analysis.
+
+No gene-level ranking or biological interpretation was used to modify the
+primary analysis.
