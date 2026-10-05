@@ -1,0 +1,16 @@
+"metric","value"
+"frozen_DE_universe",15012
+"age_sensitivity_universe",15012
+"primary_FDR_lt_0.05",7898
+"primary_abs_logFC_ge_1",1884
+"primary_FDR_lt_0.05_and_abs_logFC_ge_1",1861
+"age_direction_concordant",13832
+"age_FDR_significant_both",5131
+"age_strong_robust_set",5131
+"missing_ENTREZID",73
+"ambiguous_ENTREZID_mapping",112
+"rows_with_shared_ENTREZID",0
+"enrichment_background",14827
+"ORA_higher_IPF",1372
+"ORA_lower_IPF",465
+"ranked_enrichment_genes",14827
