@@ -1,0 +1,13 @@
+"metric","value"
+"input_DE_rows",15012
+"annotation_rows",15012
+"output_rows",15012
+"unique_output_gene_ids",15012
+"missing_from_annotation",0
+"extra_in_annotation",0
+"gene_order_unchanged",1
+"statistical_columns_unchanged",1
+"single_mapping_record_genes",14827
+"multiple_mapping_record_genes",112
+"unmapped_genes",73
+"missing_SYMBOL",73

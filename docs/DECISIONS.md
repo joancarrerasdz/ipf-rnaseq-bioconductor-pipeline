@@ -1213,3 +1213,59 @@ The annotation process did not modify the W5 statistical universe:
 The annotation mapping was audited quantitatively before biological
 interpretation of individual genes.
 
+
+---
+
+## 2026-10-05 — W6.4 annotated differential-expression table
+
+**Status:** COMPLETED / ACCEPTED
+
+The frozen W5 primary differential-expression table was joined to the
+frozen W6 annotation layer using exact Ensembl `gene_id` matching.
+
+### Structural integrity
+
+The join was explicitly required to preserve the W5 inferential result.
+
+Audit results:
+
+- input DE rows: **15,012**
+- annotation rows: **15,012**
+- output annotated rows: **15,012**
+- unique output Ensembl gene IDs: **15,012**
+- genes missing from the annotation table: **0**
+- annotation-only genes: **0**
+- gene order preserved: **TRUE**
+- all original W5 columns preserved unchanged: **TRUE**
+
+The annotated table therefore represents a descriptive annotation layer
+over the frozen W5 result and not a new statistical analysis.
+
+### Annotation status
+
+Among the 15,012 tested genes:
+
+- **14,827** have a single annotation mapping record
+- **112** have multiple annotation mapping records
+- **73** are unmapped
+- **73** have no available gene symbol
+
+No gene was removed, aggregated or reordered because of annotation status.
+
+### Frozen inferential boundary
+
+The following remain unchanged:
+
+- W5 differential-expression universe
+- IPF-vs-NDC contrast
+- lung-region adjustment
+- donor-aware correlation modelling
+- TMM normalization
+- empirical-Bayes settings
+- Benjamini-Hochberg multiple-testing correction
+- age sensitivity analysis
+- all gene-level W5 statistical values
+
+No biological interpretation or gene prioritization was used to construct
+or modify the annotated table.
+
