@@ -1073,3 +1073,84 @@ The age-adjusted model remains a pre-specified sensitivity analysis and
 will be used when assessing robustness of downstream biological findings.
 
 No gene-level biological interpretation was used to alter either model.
+
+---
+
+## 2026-10-05 — W6 gene-annotation strategy
+
+**Status:** ACCEPTED / FROZEN BEFORE GENE MAPPING
+
+The gene-annotation strategy was specified before inspection of gene symbols,
+gene names or biological interpretation of the W5 differential-expression
+results.
+
+### Frozen analytical universe
+
+The annotation layer will be applied to the frozen W5 primary
+differential-expression universe:
+
+- **15,012 genes**
+- **15,012 unique Ensembl gene IDs**
+- **0 duplicated Ensembl gene IDs**
+- all identifiers are unversioned `ENSG...` identifiers
+
+Annotation will not alter the statistical universe used for differential
+expression.
+
+### Annotation source and software
+
+Gene annotation will use:
+
+- Bioconductor: **3.21**
+- `AnnotationDbi`: **1.70.0**
+- `org.Hs.eg.db`: **3.21.0**
+- input key type: `ENSEMBL`
+
+The annotation package versions are recorded in `renv.lock`.
+
+### Annotation fields
+
+The primary annotation fields will be:
+
+- `SYMBOL`
+- `ENTREZID`
+- `GENENAME`
+
+The original Ensembl identifier will remain the primary analytical identifier
+and will be retained as `gene_id`.
+
+### Mapping rules
+
+Annotation is a downstream descriptive layer and must not modify the frozen
+W5 differential-expression results.
+
+The following rules are frozen:
+
+1. Every original Ensembl gene ID remains represented in the annotated output.
+2. Genes without an annotation mapping will be retained with missing
+   annotation fields.
+3. An unmapped gene will not be excluded from the DE universe.
+4. Multiple mappings will be detected and audited explicitly.
+5. Mapping will not silently duplicate analytical rows.
+6. Different Ensembl gene IDs mapping to the same gene symbol will not be
+   aggregated solely on the basis of the shared symbol.
+7. Gene symbols will not replace Ensembl IDs as the primary identifier.
+8. Annotation status will be reported quantitatively before biological
+   interpretation begins.
+
+### Separation from inference
+
+The following W5 results remain frozen and unchanged:
+
+- primary IPF-vs-NDC contrast
+- donor-aware correlation modelling
+- lung-region adjustment
+- TMM normalization
+- low-count filtering
+- empirical-Bayes settings
+- Benjamini-Hochberg multiple-testing correction
+- age sensitivity analysis
+
+No gene identity, annotation result, biological function or pathway information
+was inspected when these annotation rules were frozen.
+
