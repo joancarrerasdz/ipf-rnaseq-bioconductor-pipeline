@@ -1154,3 +1154,62 @@ The following W5 results remain frozen and unchanged:
 No gene identity, annotation result, biological function or pathway information
 was inspected when these annotation rules were frozen.
 
+
+---
+
+## 2026-10-05 — W6.3 gene-annotation mapping audit
+
+**Status:** COMPLETED / ACCEPTED
+
+The frozen W5 differential-expression universe of 15,012 unique Ensembl
+gene identifiers was mapped using the annotation strategy frozen before
+inspection of annotation results.
+
+### Mapping coverage
+
+Using:
+
+- key type: `ENSEMBL`
+- `AnnotationDbi` 1.70.0
+- `org.Hs.eg.db` 3.21.0
+
+the annotation audit produced:
+
+- input genes: **15,012**
+- unique input genes: **15,012**
+- genes with a single mapping record: **14,827**
+- genes with multiple mapping records: **112**
+- unmapped genes: **73**
+
+The 73 unmapped genes had no available `SYMBOL`, `ENTREZID`, or
+`GENENAME` under the frozen annotation source.
+
+### Mapping ambiguity
+
+The mapping audit identified:
+
+- genes with multiple `SYMBOL` values: **112**
+- genes with multiple `ENTREZID` values: **112**
+- genes with multiple `GENENAME` values: **111**
+- gene symbols shared by multiple Ensembl gene IDs: **16**
+
+These cases will not be resolved by selecting a mapping post hoc.
+
+For the one-row-per-Ensembl analytical annotation table, multiple annotation
+values will be retained explicitly rather than silently duplicating DE rows.
+
+### Analytical invariants
+
+The annotation process did not modify the W5 statistical universe:
+
+- **15,012 genes remain represented**
+- no gene was excluded because annotation was missing
+- no gene was excluded because annotation was ambiguous
+- Ensembl `gene_id` remains the primary identifier
+- shared gene symbols will not trigger aggregation
+- the ordering and inferential results of the frozen W5 DE table remain
+  unchanged
+
+The annotation mapping was audited quantitatively before biological
+interpretation of individual genes.
+

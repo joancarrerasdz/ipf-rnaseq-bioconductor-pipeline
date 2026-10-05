@@ -1,0 +1,13 @@
+"metric","value"
+"input_genes",15012
+"unique_input_genes",15012
+"unmapped_genes",73
+"single_mapping_record_genes",14827
+"multiple_mapping_record_genes",112
+"missing_SYMBOL",73
+"missing_ENTREZID",73
+"missing_GENENAME",73
+"genes_with_multiple_SYMBOLs",112
+"genes_with_multiple_ENTREZIDs",112
+"genes_with_multiple_GENENAMEs",111
+"symbols_shared_by_multiple_ensembl_ids",16
