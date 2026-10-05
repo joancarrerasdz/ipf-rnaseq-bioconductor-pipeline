@@ -1451,3 +1451,70 @@ At the time this framework was frozen, individual gene identities had not
 been inspected for biological prioritization and no enrichment analysis had
 been performed.
 
+
+---
+
+## 2026-10-05 — W6.7 deterministic gene-reporting order
+
+**Status:** ACCEPTED / FROZEN BEFORE FIRST GENE-IDENTITY READOUT
+
+No individual gene identities had been inspected for biological
+prioritisation when this reporting order was specified.
+
+### Primary descriptive gene set
+
+The primary descriptive set remains:
+
+`BH FDR < 0.05` and `|logFC| >= 1`
+
+This definition does not replace or modify the primary statistical
+significance criterion of `BH FDR < 0.05`.
+
+### Direction-specific reporting
+
+Genes will be reported separately as:
+
+- higher in IPF: `logFC >= 1`
+- lower in IPF: `logFC <= -1`
+
+### Deterministic ordering
+
+Within each direction, genes will be ordered by:
+
+1. `adj.P.Val` ascending,
+2. absolute `logFC` descending,
+3. absolute moderated `t` descending,
+4. `gene_id` ascending as a deterministic final tie-breaker.
+
+Annotation content, gene name, known biological function, pathway membership,
+publication history or perceived biological relevance will not influence
+this ordering.
+
+### Annotation eligibility
+
+All genes in the frozen descriptive set remain represented.
+
+Genes with missing or ambiguous annotation will be flagged explicitly and
+will not be silently removed from the gene-level statistical reporting.
+
+A separate annotation-clean subset may be used for presentation when a
+human-readable gene symbol is required, but the complete frozen statistical
+set will remain available.
+
+### Age robustness
+
+Age sensitivity will be attached descriptively after the deterministic
+primary ranking has been established.
+
+Age robustness will not be used to reorder or redefine the primary ranked
+list.
+
+A gene will be labelled strongly age-robust when, in the pre-specified
+99-sample sensitivity comparison:
+
+- `FDR_reduced < 0.05`,
+- `FDR_age_adjusted < 0.05`, and
+- effect direction is concordant.
+
+This label does not alter the frozen 101-sample primary DE result.
+
