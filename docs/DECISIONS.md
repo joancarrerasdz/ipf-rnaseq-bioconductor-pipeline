@@ -1518,3 +1518,95 @@ A gene will be labelled strongly age-robust when, in the pre-specified
 
 This label does not alter the frozen 101-sample primary DE result.
 
+
+---
+
+## 2026-10-05 — W6 functional enrichment framework
+
+**Status:** ACCEPTED / FROZEN BEFORE PATHWAY INSPECTION
+
+Functional enrichment will be performed only after completion of the
+deterministic gene-level readout and annotation audit.
+
+No pathway result had been inspected when this framework was frozen.
+
+### Statistical separation
+
+Functional enrichment is a downstream descriptive interpretation layer.
+
+It will not modify:
+
+- the frozen 15,012-gene W5 differential-expression universe
+- the primary IPF-vs-NDC statistical model
+- TMM normalization
+- donor-aware correlation modelling
+- lung-region adjustment
+- empirical-Bayes settings
+- Benjamini-Hochberg correction
+- age sensitivity analysis
+- gene-level ranking
+
+### Identifier universe
+
+Enrichment analyses requiring Entrez identifiers will use only genes with a
+single, unambiguous Entrez mapping.
+
+The frozen enrichment-eligible universe therefore contains:
+
+- **14,827 genes**
+
+Genes without an Entrez identifier or with ambiguous Entrez mapping remain in
+the complete gene-level DE results but are not used for Entrez-based
+enrichment.
+
+### Directional over-representation analysis
+
+Two independent foreground sets will be analysed:
+
+- **Higher in IPF:** 1,372 genes
+- **Lower in IPF:** 465 genes
+
+Both sets are defined by:
+
+- primary-model FDR < 0.05
+- absolute log2 fold change >= 1
+- single unambiguous Entrez mapping
+
+The common ORA background is the complete 14,827-gene enrichment-eligible
+universe.
+
+Higher- and lower-in-IPF genes will not be combined for directional ORA.
+
+### Ranked enrichment
+
+Ranked enrichment will use all **14,827 enrichment-eligible genes**.
+
+The ranking statistic will be the moderated t statistic from the frozen W5
+primary differential-expression model.
+
+Positive ranking values represent higher expression in IPF relative to NDC;
+negative values represent lower expression in IPF relative to NDC.
+
+No FDR or fold-change threshold will be used to construct the ranked list.
+
+### Interpretation principles
+
+Pathway interpretation will consider:
+
+1. statistical significance,
+2. enrichment magnitude,
+3. direction,
+4. gene-set size,
+5. consistency between ORA and ranked enrichment,
+6. robustness of contributing genes to the pre-specified age sensitivity
+   analysis,
+7. biological coherence across related pathways.
+
+Individual pathways will not be used to redefine the gene universe or
+statistical model.
+
+Redundant pathways will be interpreted as biological themes rather than as
+independent discoveries.
+
+No enrichment results had been generated or inspected when these decisions
+were frozen.
