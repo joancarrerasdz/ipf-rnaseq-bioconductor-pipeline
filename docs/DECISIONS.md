@@ -1269,3 +1269,185 @@ The following remain unchanged:
 No biological interpretation or gene prioritization was used to construct
 or modify the annotated table.
 
+
+---
+
+## 2026-10-05 — W6.5 biological interpretation and enrichment framework
+
+**Status:** ACCEPTED / FROZEN BEFORE BIOLOGICAL INTERPRETATION
+
+The biological-interpretation framework was specified after completion of
+the annotation integrity audit but before inspection or ranking of individual
+gene identities.
+
+The frozen W5 primary differential-expression analysis remains the sole
+primary inferential analysis.
+
+### Primary statistical evidence
+
+Primary statistical significance remains defined as:
+
+`BH FDR < 0.05`
+
+No absolute log-fold-change threshold is introduced as an additional
+statistical significance criterion.
+
+Effect size and statistical significance will therefore be reported
+separately.
+
+For descriptive biological prioritization, an absolute effect size of:
+
+`|logFC| >= 1`
+
+may be used to identify genes with relatively large estimated effects.
+
+This threshold is descriptive and must not alter the primary FDR-based
+significance calls.
+
+### Direction of effect
+
+The frozen primary coefficient is:
+
+`diseasegroupIPF`
+
+Therefore:
+
+- positive `logFC` = higher expression in IPF relative to NDC
+- negative `logFC` = lower expression in IPF relative to NDC
+
+All biological interpretation must preserve this direction convention.
+
+### Gene-level interpretation
+
+The original Ensembl `gene_id` remains the primary analytical identifier.
+
+`SYMBOL`, `ENTREZID`, and `GENENAME` are descriptive annotation fields.
+
+Genes lacking annotation remain in the statistical result and must not be
+removed from the W5 DE table.
+
+Genes with ambiguous annotation will be flagged rather than resolved by
+post-hoc selection of a preferred biological label.
+
+Shared symbols must not trigger aggregation of differential-expression rows.
+
+### Gene prioritization
+
+Gene prioritization will only begin after this framework is frozen.
+
+The primary descriptive priority set will consist of genes satisfying:
+
+`BH FDR < 0.05` and `|logFC| >= 1`
+
+Genes meeting `BH FDR < 0.05` but with smaller effect sizes remain valid
+statistically significant findings and will not be reclassified as
+non-significant.
+
+Gene ranking for reporting will use frozen statistical quantities and will
+not be used to redefine the statistical analysis.
+
+### Age-sensitivity interpretation
+
+Age remains a pre-specified sensitivity analysis and does not replace the
+primary model.
+
+Robustness to age adjustment will be evaluated using the previously generated
+99-sample same-cohort comparison between:
+
+Reduced model:
+
+`~ diseasegroup + lunglocation`
+
+and age-adjusted model:
+
+`~ diseasegroup + lunglocation + age`
+
+Gene-level age robustness will be treated descriptively.
+
+Genes with concordant effect direction and FDR < 0.05 in both same-cohort
+models will be considered strongly robust to age adjustment.
+
+Genes whose significance materially changes after age adjustment will be
+flagged as age-sensitive rather than removed from the primary W5 result.
+
+### Mapping rules for enrichment
+
+Pathway enrichment is downstream of the frozen differential-expression
+analysis and must not modify the DE universe or statistical results.
+
+For identifier-dependent enrichment analyses, only genes with an
+unambiguous usable annotation identifier will contribute to the mapped
+enrichment universe.
+
+Genes excluded from a specific enrichment analysis because of missing or
+ambiguous annotation will remain present in the primary DE table and their
+number will be reported explicitly.
+
+No arbitrary mapping will be selected from one-to-many annotation cases.
+
+### Over-representation analysis
+
+Over-representation analysis (ORA) will be performed separately for genes
+with higher expression in IPF and genes with lower expression in IPF.
+
+The descriptive foreground definition will be:
+
+`BH FDR < 0.05` and `|logFC| >= 1`
+
+The enrichment background will be derived from the full frozen set of
+15,012 tested genes after application of the same identifier-mapping
+eligibility rules used for the foreground.
+
+The background must therefore represent tested genes, not the complete
+genome.
+
+Multiple-testing correction for enrichment results will use the
+Benjamini-Hochberg procedure.
+
+### Ranked gene-set analysis
+
+Ranked enrichment will complement threshold-based ORA.
+
+The ranking statistic will be the moderated disease-effect test statistic
+from the frozen W5 model rather than raw p-value alone.
+
+Positive ranking values represent enrichment toward higher expression in IPF;
+negative ranking values represent enrichment toward lower expression in IPF.
+
+No DE-significance threshold will be used to construct the ranked input.
+
+Identifier ambiguity will be resolved only through deterministic,
+pre-specified eligibility rules and never by selecting genes because they
+produce stronger biological enrichment.
+
+### Biological databases
+
+The primary functional interpretation will focus on:
+
+- Gene Ontology Biological Process
+- Reactome pathways
+
+Additional databases may be used only as explicitly labelled secondary or
+exploratory analyses.
+
+Enrichment databases and software versions must be recorded in the
+reproducible environment before execution.
+
+### Reporting principles
+
+Biological interpretation will distinguish explicitly between:
+
+1. statistical significance,
+2. magnitude and direction of differential expression,
+3. robustness to age adjustment,
+4. annotation certainty,
+5. pathway-level enrichment.
+
+No individual gene or pathway will be selected to modify filtering,
+normalization, model specification, covariate choice, or inferential
+thresholds.
+
+At the time this framework was frozen, individual gene identities had not
+been inspected for biological prioritization and no enrichment analysis had
+been performed.
+
