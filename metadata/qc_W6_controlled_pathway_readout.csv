@@ -1,0 +1,11 @@
+"metric","value"
+"GO_BP_ORA_higher_significant",399
+"GO_BP_ORA_lower_significant",147
+"Reactome_ORA_higher_significant",65
+"Reactome_ORA_lower_significant",20
+"GO_BP_GSEA_significant",1054
+"GO_BP_GSEA_positive_NES_significant",639
+"GO_BP_GSEA_negative_NES_significant",415
+"top20_tables",6
+"rows_per_top_table",20
+"combined_readout_rows",120
