@@ -1881,3 +1881,86 @@ Ranked enrichment will not alter:
 
 No pathway result will be used to redefine the W5 statistical model.
 
+### 2026-10-06 — W6 deterministic pathway reporting order
+
+**Status:** FROZEN BEFORE SYSTEMATIC BIOLOGICAL INTERPRETATION
+
+The W6 enrichment analyses have completed and passed their corresponding
+result-QC stages. A deterministic pathway-reporting procedure is now frozen
+before systematic inspection or interpretation of pathway identities.
+
+#### Inputs
+
+The controlled biological readout will use the previously generated
+significant-result tables without modifying the underlying enrichment
+analyses:
+
+- GO:BP ORA — higher in IPF: **399 terms**
+- GO:BP ORA — lower in IPF: **147 terms**
+- Reactome ORA — higher in IPF: **65 terms**
+- Reactome ORA — lower in IPF: **20 terms**
+- GO:BP ranked enrichment: **1,054 terms**
+
+Complete result tables remain retained.
+
+#### ORA deterministic reporting order
+
+GO:BP and Reactome ORA results will be ordered using:
+
+1. `p.adjust` ascending,
+2. `pvalue` ascending,
+3. `Count` descending,
+4. `ID` ascending.
+
+The primary controlled readout will contain the first **20 terms** from each
+direction/resource combination.
+
+Pathway names or descriptions will not be used for ranking or selection.
+
+#### Ranked enrichment deterministic reporting order
+
+GO:BP ranked-enrichment results will first be separated by enrichment
+direction:
+
+- positive `NES`: enrichment toward genes higher in IPF,
+- negative `NES`: enrichment toward genes lower in IPF.
+
+Within each direction, results will be ordered using:
+
+1. `p.adjust` ascending,
+2. absolute `NES` descending,
+3. `ID` ascending.
+
+The primary controlled readout will contain the first **20 terms** in each
+direction.
+
+#### Redundancy policy
+
+No pathway will be removed from the primary statistical result tables because
+of its name, biological similarity, or perceived redundancy.
+
+No `simplify()` procedure or equivalent semantic-redundancy filter will be
+used to construct the primary readout.
+
+Related pathways may subsequently be summarized as broader biological themes,
+while retaining the original pathway-level results and identifiers.
+
+#### Separation from inference
+
+This reporting procedure does not modify:
+
+- the frozen W5 differential-expression model,
+- the 15,012-gene DE universe,
+- the 14,827-gene enrichment-eligible universe,
+- ORA foreground definitions,
+- enrichment background,
+- ranked-enrichment input,
+- multiple-testing correction,
+- pathway-level statistical values,
+- or gene-level ranking.
+
+Age robustness may subsequently be attached as descriptive context but will
+not redefine pathway ranking.
+
+No manual selection based on pathway descriptions will be used to construct
+the controlled pathway readout.
