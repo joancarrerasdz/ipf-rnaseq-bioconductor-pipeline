@@ -1,0 +1,9 @@
+"metric","value"
+"background_genes",14827
+"foreground_genes",1372
+"reactome_terms_returned",1010
+"BH_adjusted_P_lt_0.05",65
+"minimum_raw_P",6.56480439308519e-36
+"minimum_adjusted_P",6.63045243701604e-33
+"minGSSize",10
+"maxGSSize",500
