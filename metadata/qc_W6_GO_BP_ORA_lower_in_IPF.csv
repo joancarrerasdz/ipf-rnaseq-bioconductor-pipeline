@@ -1,0 +1,11 @@
+"metric","value"
+"background_genes",14827
+"foreground_genes",465
+"background_unique_ENTREZID",14827
+"foreground_unique_ENTREZID",465
+"background_not_in_orgdb",0
+"foreground_not_in_orgdb",0
+"GO_BP_terms_returned",3818
+"GO_BP_BH_significant",147
+"minGSSize",10
+"maxGSSize",500
