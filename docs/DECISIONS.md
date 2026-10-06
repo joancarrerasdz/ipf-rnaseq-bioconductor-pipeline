@@ -1741,3 +1741,143 @@ differential-expression thresholds.
 
 No enrichment results had been generated or inspected when these settings
 were frozen.
+
+## 2026-10-06 — W6 ranked enrichment execution framework
+
+**Status:** FROZEN BEFORE EXECUTION
+
+Ranked gene-set enrichment is a downstream descriptive interpretation layer.
+No ranked-enrichment result had been generated or inspected when the following
+settings were frozen.
+
+### Frozen ranked input
+
+The ranked enrichment input is:
+
+`results/enrichment/input/W6_ranked_enrichment_moderated_t.csv`
+
+The input contains exactly **14,827 genes**, corresponding to the
+one-to-one ENTREZID enrichment-eligible subset derived from the frozen
+15,012-gene W5 differential-expression universe.
+
+The ranking statistic is the moderated `t` statistic from the frozen W5
+primary differential-expression model.
+
+The ranking is ordered in decreasing moderated `t`:
+
+- positive `t` = higher expression in IPF relative to NDC
+- negative `t` = lower expression in IPF relative to NDC
+
+Observed frozen input properties before enrichment execution:
+
+- genes: **14,827**
+- positive moderated `t`: **7,334**
+- negative moderated `t`: **7,493**
+- zero moderated `t`: **0**
+- duplicated moderated `t`: **0**
+- maximum moderated `t`: **15.61064**
+- minimum moderated `t`: **-13.26736**
+
+No FDR threshold or absolute log-fold-change threshold will be used to
+construct or truncate the ranked list.
+
+### GO Biological Process ranked enrichment
+
+Primary GO ranked enrichment will use:
+
+- method: GSEA / preranked enrichment
+- implementation: `clusterProfiler::gseGO()`
+- enrichment engine: `fgsea`
+- ontology: **BP**
+- organism annotation: `org.Hs.eg.db`
+- identifier: **ENTREZID**
+- complete ranked universe: **14,827 genes**
+- ranking statistic: moderated `t`
+- exponent: **1**
+- minimum gene-set size: **10**
+- maximum gene-set size: **500**
+- multiple-testing adjustment: **Benjamini-Hochberg**
+- result-retention cutoff: permissive (`pvalueCutoff = 1`)
+- numerical epsilon: **0**
+- reproducible seed: **20261006**
+
+The complete returned result table will be retained.
+Statistical significance for reporting will subsequently be defined as:
+
+`BH-adjusted P < 0.05`
+
+### Reactome ranked enrichment
+
+Primary Reactome ranked enrichment will use:
+
+- method: GSEA / preranked enrichment
+- implementation: `ReactomePA::gsePathway()`
+- enrichment engine: `fgsea`
+- organism: **human**
+- identifier: **ENTREZID**
+- complete ranked universe: **14,827 genes**
+- ranking statistic: moderated `t`
+- exponent: **1**
+- minimum gene-set size: **10**
+- maximum gene-set size: **500**
+- multiple-testing adjustment: **Benjamini-Hochberg**
+- result-retention cutoff: permissive (`pvalueCutoff = 1`)
+- numerical epsilon: **0**
+- reproducible seed: **20261006**
+
+The complete returned result table will be retained.
+Statistical significance for reporting will subsequently be defined as:
+
+`BH-adjusted P < 0.05`
+
+### Direction
+
+For ranked enrichment:
+
+- positive NES represents enrichment toward genes higher in IPF relative to NDC
+- negative NES represents enrichment toward genes lower in IPF relative to NDC
+
+Direction will be inferred only from the enrichment score/NES returned by
+the prespecified ranked analysis.
+
+### Interpretation rules
+
+Primary result tables will not be filtered according to pathway names,
+biological expectations, or post hoc manual selection.
+
+GO terms will not be removed from the primary statistical tables using
+`simplify()` or another semantic-redundancy method.
+
+Related or redundant significant gene sets may later be summarized into
+broader biological themes, but the original statistical results will remain
+available.
+
+Interpretation will consider jointly:
+
+1. BH-adjusted statistical significance,
+2. normalized enrichment score (NES),
+3. enrichment direction,
+4. gene-set size,
+5. leading-edge/core-enrichment genes,
+6. consistency with directional ORA,
+7. consistency between GO:BP and Reactome,
+8. robustness of contributing genes in the prespecified age-sensitivity
+   analysis.
+
+### Separation from W5 inference
+
+Ranked enrichment will not alter:
+
+- the frozen W5 differential-expression universe,
+- normalization,
+- filtering,
+- donor-aware correlation modelling,
+- lung-region adjustment,
+- empirical-Bayes settings,
+- multiple-testing correction,
+- age-sensitivity analysis,
+- gene-level statistics,
+- gene-level ranking.
+
+No pathway result will be used to redefine the W5 statistical model.
+
