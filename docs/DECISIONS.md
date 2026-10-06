@@ -1964,3 +1964,73 @@ not redefine pathway ranking.
 
 No manual selection based on pathway descriptions will be used to construct
 the controlled pathway readout.
+
+## 2026-10-06 — W6 biological theme interpretation framework
+
+**Status:** FROZEN BEFORE THEMATIC SYNTHESIS
+
+Biological interpretation is performed only after completion and QC of the
+deterministic 120-row controlled pathway readout.
+
+The thematic interpretation is a descriptive, post-inference layer. It does
+not modify pathway-level or gene-level statistical results.
+
+### Primary biological themes
+
+Pathway-level results will be interpreted using the following broad biological
+themes:
+
+1. extracellular-matrix / collagen / fibrotic remodeling,
+2. cilium / axoneme / microtubule-associated motility,
+3. tissue-development / structural remodeling,
+4. mucosal / antimicrobial / innate immune response,
+5. leukocyte / neutrophil-associated processes,
+6. surfactant / lipid / sterol metabolism,
+7. mitochondrial respiration / oxidative phosphorylation / ATP production,
+8. broad signalling or mixed processes requiring pathway-specific caution.
+
+### Interpretation rules
+
+Themes are descriptive summaries of statistically frozen pathway results.
+
+No pathway will be removed because it is redundant with another pathway.
+
+No semantic-redundancy algorithm will be used to modify the primary result
+tables.
+
+No pathway will be promoted or discarded because it matches an expected IPF
+mechanism.
+
+Concordance across GO:BP ORA, Reactome ORA, and GO:BP ranked enrichment will
+be given greater descriptive weight than evidence from a single method.
+
+Direction will always be retained explicitly as higher-in-IPF or lower-in-IPF.
+
+Broad pathways occurring in both directions will not be assigned a global
+direction without examination of the contributing genes.
+
+Ontology labels with context-specific terminology will be interpreted through
+their underlying biological machinery rather than literally when appropriate;
+for example, sperm-motility GO terms driven by axonemal genes will be treated
+as motile-cilium/axoneme biology.
+
+Ranked enrichment will be used to identify coordinated transcriptome-wide
+directional programs complementary to threshold-based ORA.
+
+Age robustness may be added as descriptive context in a later step but will
+not modify pathway ranking or statistical significance.
+
+### Separation from inference
+
+The thematic synthesis does not alter:
+
+- the frozen W5 differential-expression model,
+- the 15,012-gene statistical universe,
+- the 14,827-gene enrichment universe,
+- ORA foregrounds,
+- enrichment backgrounds,
+- pathway statistical values,
+- multiple-testing correction,
+- ranked-enrichment input,
+- pathway reporting ranks,
+- or gene-level ranks.
