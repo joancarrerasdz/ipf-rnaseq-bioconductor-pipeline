@@ -1610,3 +1610,134 @@ independent discoveries.
 
 No enrichment results had been generated or inspected when these decisions
 were frozen.
+
+---
+
+## 2026-10-06 — W6 functional enrichment resources and execution settings
+
+**Status:** ACCEPTED / FROZEN BEFORE FIRST ENRICHMENT EXECUTION
+
+The functional-enrichment resources and primary execution parameters were
+specified before generation or inspection of any enrichment result.
+
+### Functional knowledge bases
+
+The primary W6 functional interpretation will use two complementary resources:
+
+1. **Gene Ontology — Biological Process (GO:BP)**
+2. **Reactome pathways**
+
+GO Molecular Function and Cellular Component will not be part of the primary
+W6 enrichment analysis.
+
+KEGG and MSigDB will not be added to the primary W6 analysis.
+
+This restriction is intended to limit analytical degrees of freedom and
+redundant database searching.
+
+### Identifier universe
+
+Enrichment analyses will use `ENTREZID`.
+
+The frozen W5 differential-expression universe remains:
+
+- **15,012 Ensembl genes**
+
+The enrichment-eligible universe contains:
+
+- **14,827 genes**
+- **14,827 unique ENTREZIDs**
+
+Genes without an unambiguous enrichment identifier remain represented in the
+frozen differential-expression results but are not used in enrichment tests.
+
+### ORA
+
+Directional over-representation analysis will be performed separately for:
+
+- Higher in IPF: **1,372 genes**
+- Lower in IPF: **465 genes**
+
+The common ORA background is the complete enrichment-eligible universe:
+
+- **14,827 genes**
+
+Higher- and lower-in-IPF genes will not be combined.
+
+Primary gene-set size limits:
+
+- minimum gene-set size: **10**
+- maximum gene-set size: **500**
+
+Multiple testing will use the Benjamini-Hochberg procedure.
+
+The primary pathway-level significance criterion is:
+
+`BH-adjusted P < 0.05`
+
+Complete enrichment result tables will be retained irrespective of the
+significance threshold whenever supported by the implementation.
+
+### Ranked enrichment
+
+Ranked enrichment will use all:
+
+- **14,827 enrichment-eligible genes**
+
+The ranking statistic remains the moderated `t` statistic from the frozen W5
+primary differential-expression model.
+
+The ranked list will be sorted in decreasing order:
+
+- positive statistic = higher expression in IPF relative to NDC
+- negative statistic = lower expression in IPF relative to NDC
+
+No FDR threshold or absolute log-fold-change threshold will be used to
+construct the ranked list.
+
+Primary gene-set size limits are:
+
+- minimum gene-set size: **10**
+- maximum gene-set size: **500**
+
+Multiple testing will use the Benjamini-Hochberg procedure.
+
+The primary pathway-level significance criterion is:
+
+`BH-adjusted P < 0.05`
+
+For ranked enrichment:
+
+- positive enrichment scores correspond to enrichment toward genes higher in IPF
+- negative enrichment scores correspond to enrichment toward genes lower in IPF
+
+### Redundancy and interpretation
+
+Primary enrichment result tables will not be filtered using pathway names,
+biological expectations, or post hoc manual selection.
+
+GO terms will not be removed from the primary tables using `simplify()` or an
+equivalent semantic-redundancy filter.
+
+Redundant or related significant terms may subsequently be summarized as
+broader biological themes, but the original statistical results will remain
+available.
+
+Interpretation will consider jointly:
+
+1. adjusted statistical significance,
+2. enrichment magnitude,
+3. direction,
+4. gene-set size,
+5. agreement between ORA and ranked enrichment,
+6. agreement between GO:BP and Reactome,
+7. robustness of contributing genes to the pre-specified age sensitivity
+   analysis,
+8. biological coherence across related pathways.
+
+No pathway result will be allowed to modify the frozen W5 statistical model,
+gene universe, filtering, normalization, covariate specification, or
+differential-expression thresholds.
+
+No enrichment results had been generated or inspected when these settings
+were frozen.
