@@ -1,0 +1,9 @@
+"metric","value"
+"input_rows",16
+"output_rows",16
+"themes",8
+"directions",2
+"primary_convergent_evidence",4
+"secondary_convergent_evidence",4
+"contextual_single_stream_evidence",2
+"no_controlled_pathway_support",6
