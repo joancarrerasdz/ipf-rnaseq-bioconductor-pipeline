@@ -2449,3 +2449,84 @@ It will not:
 - combine opposite directions,
 - infer causality,
 - or modify any upstream W5 or W6 statistical result.
+
+#### 2026-10-08 — W6 final biological reporting framework
+
+**Status:** FROZEN BEFORE FINAL BIOLOGICAL REPORTING
+
+The final W6 biological report will be constructed only from the frozen
+controlled biological synthesis generated in W6.17.
+
+No differential-expression, enrichment, pathway-ranking, theme-assignment,
+evidence-classification, or controlled-synthesis result will be recalculated
+or modified.
+
+##### Source of truth
+
+The primary biological-reporting input is:
+
+`results/interpretation/synthesis/W6_controlled_biological_synthesis.csv`
+
+Upstream statistical and controlled pathway outputs remain frozen and may be
+consulted only for traceability and contextual verification.
+
+##### Reporting structure
+
+The final biological synthesis will preserve the prespecified biological-theme
+order:
+
+1. extracellular-matrix / collagen / fibrotic remodeling,
+2. cilium / axoneme / microtubule-associated motility,
+3. tissue-development / structural remodeling,
+4. mucosal / antimicrobial / innate immune response,
+5. leukocyte / neutrophil-associated processes,
+6. surfactant / lipid / sterol metabolism,
+7. mitochondrial respiration / oxidative phosphorylation / ATP production,
+8. broad signalling or mixed processes requiring pathway-specific caution.
+
+Within each theme, `higher_in_IPF` and `lower_in_IPF` will remain explicitly
+separated.
+
+##### Evidence hierarchy
+
+Interpretive emphasis will follow the frozen W6 evidence hierarchy:
+
+1. `primary_convergent_evidence`
+2. `secondary_convergent_evidence`
+3. `contextual_single_stream_evidence`
+4. `no_controlled_pathway_support`
+
+Primary convergent evidence may anchor the principal biological observations.
+
+Secondary convergent evidence may support complementary biological patterns.
+
+Contextual single-stream evidence will be described explicitly as limited
+evidence and will not be presented as convergent support.
+
+`no_controlled_pathway_support` will not be interpreted as evidence of
+biological absence.
+
+##### Biological claim rules
+
+The final report will describe coordinated pathway-level patterns and their
+direction relative to NDC.
+
+The report will not:
+
+- infer causality,
+- redefine statistical significance,
+- modify pathway rankings,
+- combine opposite directions,
+- promote pathways because they fit prior biological expectations,
+- interpret absence from the controlled readout as biological absence,
+- or modify any frozen W5 or W6 statistical result.
+
+Where biological themes contain evidence in both directions, the directional
+patterns will be reported separately and interpreted cautiously.
+
+##### Final reporting objective
+
+The final W6 synthesis will provide a concise, reproducible biological account
+of the pathway-level differences between IPF and NDC while preserving complete
+separation between statistical inference and post-inference biological
+interpretation.
