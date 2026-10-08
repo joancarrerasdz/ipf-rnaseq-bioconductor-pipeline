@@ -1,0 +1,11 @@
+"metric","value"
+"input_rows",16
+"output_table_rows",16
+"themes",8
+"directions",2
+"reporting_indices_unique",16
+"missing_biological_statements",0
+"primary_convergent_evidence",4
+"secondary_convergent_evidence",4
+"contextual_single_stream_evidence",2
+"no_controlled_pathway_support",6
