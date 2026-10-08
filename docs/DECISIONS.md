@@ -2313,3 +2313,139 @@ The biological interpretation procedure will not modify:
 
 No pathway will be removed, promoted, or re-ranked because it fits an expected IPF
 mechanism.
+
+#### 2026-10-08 — W6 controlled biological synthesis framework
+
+**Status:** FROZEN BEFORE BIOLOGICAL SYNTHESIS
+
+The controlled biological synthesis will use only statistically frozen W6
+pathway-level outputs and the deterministic biological-synthesis scaffold.
+
+No differential-expression, enrichment, pathway-ranking, theme-assignment,
+or evidence-classification result will be recalculated or modified.
+
+##### Interpretation unit
+
+The primary synthesis unit is:
+
+`theme × direction`
+
+Directions remain explicitly separated as:
+
+- `higher_in_IPF`
+- `lower_in_IPF`
+
+Evidence from opposite directions will not be merged into a single biological
+claim.
+
+##### Frozen evidence hierarchy
+
+Biological statements will follow the prespecified deterministic evidence
+hierarchy:
+
+1. `primary_convergent_evidence`
+2. `secondary_convergent_evidence`
+3. `contextual_single_stream_evidence`
+4. `no_controlled_pathway_support`
+
+`primary_convergent_evidence` identifies theme-direction combinations supported
+by all three frozen pathway evidence streams.
+
+`secondary_convergent_evidence` identifies combinations supported by two frozen
+evidence streams.
+
+`contextual_single_stream_evidence` may be reported as limited contextual
+evidence but will not be described as convergent support.
+
+`no_controlled_pathway_support` means that the theme-direction combination is
+not represented in the deterministic controlled pathway readout. It will not
+be interpreted as proof of biological absence.
+
+##### Biological claim rules
+
+Biological interpretation will describe coordinated pathway-level patterns,
+not causal mechanisms.
+
+Claims will be based on:
+
+- frozen pathway descriptions,
+- explicit direction,
+- evidence class,
+- contributing evidence streams,
+- and, where required, contributing pathway genes already present in the
+  frozen enrichment outputs.
+
+No pathway will be promoted because it matches an expected IPF mechanism.
+
+No pathway will be discarded because it appears biologically unexpected.
+
+Broad or mixed signalling themes will be interpreted cautiously and will not
+receive a single mechanistic label unless supported by the contributing
+pathways and genes.
+
+##### Convergence language
+
+For `primary_convergent_evidence`, wording may describe strong or convergent
+pathway-level support.
+
+For `secondary_convergent_evidence`, wording may describe convergent support
+across two evidence streams.
+
+For `contextual_single_stream_evidence`, wording will explicitly identify the
+finding as single-stream or contextual evidence.
+
+For `no_controlled_pathway_support`, no positive directional biological claim
+will be generated.
+
+Evidence-class labels describe convergence of the controlled pathway evidence.
+They are not additional statistical significance tests.
+
+##### Statistical separation
+
+The biological synthesis does not alter:
+
+- the frozen W5 differential-expression model,
+- the 15,012-gene statistical universe,
+- the 14,827-gene enrichment-eligible universe,
+- ORA foregrounds or enrichment backgrounds,
+- ranked-enrichment input,
+- pathway P values,
+- adjusted P values,
+- enrichment scores,
+- pathway reporting ranks,
+- gene-level ranks,
+- pathway theme assignments,
+- the W6 thematic evidence summary,
+- the W6 biological evidence classification,
+- or the W6 biological synthesis scaffold.
+
+No new multiple-testing procedure is introduced at the interpretation stage.
+
+##### Reporting order
+
+Themes will remain in the previously frozen biological-theme order:
+
+1. extracellular-matrix / collagen / fibrotic remodeling,
+2. cilium / axoneme / microtubule-associated motility,
+3. tissue-development / structural remodeling,
+4. mucosal / antimicrobial / innate immune response,
+5. leukocyte / neutrophil-associated processes,
+6. surfactant / lipid / sterol metabolism,
+7. mitochondrial respiration / oxidative phosphorylation / ATP production,
+8. broad signalling or mixed processes requiring pathway-specific caution.
+
+Within every theme, `higher_in_IPF` and `lower_in_IPF` remain separate.
+
+##### Separation from inference
+
+The W6 controlled biological synthesis is a descriptive post-inference layer.
+
+It will not:
+
+- redefine statistical significance,
+- change pathway rankings,
+- modify gene-level statistics,
+- remove statistically supported pathways,
+- combine opposite directions,
+- infer causality,
+- or modify any upstream W5 or W6 statistical result.
