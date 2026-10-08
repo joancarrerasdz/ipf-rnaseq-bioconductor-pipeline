@@ -2530,3 +2530,70 @@ The final W6 synthesis will provide a concise, reproducible biological account
 of the pathway-level differences between IPF and NDC while preserving complete
 separation between statistical inference and post-inference biological
 interpretation.
+
+#### 2026-10-08 — W6 formal closure certificate
+
+**Status:** W6 CLOSED
+
+Week 6 of the GSE213001 IPF RNA-seq analysis pipeline is formally closed after completion of the pathway-level enrichment, deterministic thematic aggregation, biological evidence classification, controlled biological synthesis, final biological reporting, and global closure QA.
+
+##### Frozen analytical state
+
+The W6 closure preserves without modification:
+
+- the frozen W5 differential-expression model,
+- the 15,012-gene statistical universe,
+- the 14,827-gene enrichment-eligible universe,
+- GO:BP directional ORA,
+- Reactome directional ORA,
+- GO:BP ranked enrichment,
+- pathway-level P values and adjusted P values,
+- enrichment scores,
+- pathway reporting ranks,
+- theme assignments,
+- biological evidence classification,
+- controlled biological synthesis,
+- and the final biological report.
+
+##### Final controlled biological structure
+
+The final W6 interpretation contains:
+
+- 8 biological themes,
+- 2 explicit directions per theme,
+- 16 theme × direction reporting units,
+- 4 `primary_convergent_evidence` units,
+- 4 `secondary_convergent_evidence` units,
+- 2 `contextual_single_stream_evidence` units,
+- 6 `no_controlled_pathway_support` units.
+
+Opposite directions remain separate throughout interpretation.
+
+Absence from the controlled pathway readout is not interpreted as biological absence.
+
+##### Final outputs
+
+The final biological report is stored as:
+
+- `results/interpretation/final/W6_final_biological_report.md`
+- `results/interpretation/final/W6_final_biological_report.csv`
+
+Final QC metadata are stored as:
+
+- `metadata/qc_W6_final_biological_report.csv`
+
+##### Closure QA
+
+Global closure QA confirmed that:
+
+- all required W6 scripts and outputs are present,
+- all required files are tracked by Git,
+- the final reporting chain is complete,
+- decision provenance is documented,
+- `main` is synchronized with `origin/main`,
+- the working tree is clean,
+- and `git diff --check` reports no whitespace errors.
+
+No statistical result was recalculated or modified during closure QA.
+
+W6 is therefore considered analytically, interpretively, and computationally frozen.
