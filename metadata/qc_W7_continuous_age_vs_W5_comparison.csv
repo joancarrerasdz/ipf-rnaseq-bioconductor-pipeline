@@ -1,0 +1,12 @@
+"metric","value"
+"W5_rows",15012
+"W7_rows",15012
+"gene_order_identical",1
+"W5_FDR_0_05",7898
+"W7_FDR_0_05",5277
+"shared_FDR",5015
+"W5_only_FDR",2883
+"W7_only_FDR",262
+"neither_FDR",6852
+"direction_concordant_genes",13702
+"direction_discordant_genes",1310
