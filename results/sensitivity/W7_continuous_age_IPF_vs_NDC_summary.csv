@@ -1,0 +1,16 @@
+"metric","value"
+"tested_genes",15012
+"analysis_samples",99
+"analysis_donors",33
+"excluded_missing_age_samples",2
+"excluded_missing_age_donors",1
+"duplicateCorrelation_pass1",0.322161396784712
+"duplicateCorrelation_pass2",0.322146601824042
+"raw_p_lt_0.05",6735
+"fdr_lt_0.05",5277
+"fdr_lt_0.05_logFC_positive",2610
+"fdr_lt_0.05_logFC_negative",2667
+"abs_logFC_ge_1",1777
+"fdr_lt_0.05_and_abs_logFC_ge_1",1496
+"min_raw_p",9.80267779273513e-26
+"min_fdr",1.4715779902454e-21
