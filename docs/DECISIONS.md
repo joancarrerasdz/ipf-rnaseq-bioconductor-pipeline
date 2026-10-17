@@ -2707,3 +2707,90 @@ A covariate-adjusted model will not replace the frozen primary analysis solely b
 Changes will be reported as sensitivity findings rather than as retrospective redefinition of the primary model.
 
 No result will be selected because it better matches prior biological expectations.
+
+##### 2026-10-17 — W7 continuous-age sensitivity conclusion
+
+**Status:** FROZEN AFTER SENSITIVITY ANALYSIS
+
+The continuous-age sensitivity analysis assessed the robustness of the frozen
+W5 IPF-vs-NDC differential-expression contrast to adjustment for age.
+
+The frozen W5 primary model remains the reference analysis and was not modified.
+
+###### Sensitivity design
+
+The prespecified continuous-age sensitivity model used:
+
+- formula: `~ 0 + group + age_numeric`
+- complete-case cohort: 99 samples
+- 33 donors
+- two samples from donor `ALF017` excluded because continuous age was missing
+- no age value was imputed.
+
+The frozen W5 reference cohort contained:
+
+- 101 samples
+- 34 donors.
+
+###### Genome-wide effect stability
+
+Comparison of the 15,012 genes shared between the frozen W5 analysis and the
+continuous-age sensitivity analysis showed:
+
+- Pearson correlation of logFC: 0.9656
+- Spearman correlation of logFC: 0.9509
+- global directional concordance: 0.9127
+- median absolute change in logFC: 0.0710
+- 95th percentile absolute change in logFC: 0.4072
+- maximum absolute change in logFC: 1.9974.
+
+These results indicate strong genome-wide stability of the estimated
+IPF-vs-NDC effect after continuous-age adjustment.
+
+###### FDR overlap
+
+At FDR < 0.05:
+
+- frozen W5 significant genes: 7,898
+- continuous-age W7 significant genes: 5,277
+- significant in both analyses: 5,015
+- W5-only significant genes: 2,883
+- W7-only significant genes: 262
+- significant in neither analysis: 6,852
+- FDR Jaccard index: 0.6146
+- proportion of W5 FDR genes retained in W7: 0.6350
+- proportion of W7 FDR genes already significant in W5: 0.9504.
+
+The continuous-age model therefore produced a smaller FDR-significant set,
+rather than a substantially different directional signal.
+
+###### Shared-FDR effect stability
+
+Among the 5,015 genes significant at FDR < 0.05 in both analyses:
+
+- Pearson correlation of logFC: 0.9851
+- Spearman correlation of logFC: 0.9897
+- median absolute change in logFC: 0.0757
+- 95th percentile absolute change in logFC: 0.4014
+- directional concordance: 1.0000.
+
+No gene significant in both models changed direction.
+
+###### Interpretation
+
+Adjustment for continuous age reduced the number of genes meeting the
+FDR < 0.05 threshold but preserved the overall IPF-vs-NDC effect pattern.
+
+The strongest reproducible differential-expression signal is therefore
+robust to continuous-age adjustment in effect direction and relative
+effect magnitude.
+
+This sensitivity analysis does not establish that age has no biological
+or statistical influence. It demonstrates that inclusion of continuous
+age as a covariate does not materially reverse the principal frozen W5
+IPF-vs-NDC transcriptomic pattern.
+
+The frozen W5 primary analysis remains the reference analysis.
+
+No W5 or W6 result was recalculated, overwritten, re-ranked, or modified
+during this sensitivity analysis.
