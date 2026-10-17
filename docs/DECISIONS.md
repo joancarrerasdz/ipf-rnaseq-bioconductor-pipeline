@@ -2597,3 +2597,113 @@ Global closure QA confirmed that:
 No statistical result was recalculated or modified during closure QA.
 
 W6 is therefore considered analytically, interpretively, and computationally frozen.
+
+##### 2026-10-17 — W7 sensitivity-analysis design and missing-age policy
+
+**Status:** FROZEN BEFORE SENSITIVITY MODEL EXECUTION
+
+Week 7 evaluates robustness of the frozen W5 differential-expression conclusions to prespecified demographic covariates.
+
+No W5 or W6 statistical result will be overwritten or modified.
+
+###### Primary frozen reference
+
+The frozen W5 primary model remains the reference analysis:
+
+- cohort: 101 samples,
+- groups: IPF.Apex, IPF.Base, NDC.Apex, NDC.Base,
+- donor-aware analysis structure preserved,
+- all frozen W5 and W6 outputs remain immutable.
+
+W7 sensitivity analyses are additional models only.
+
+###### Age missingness
+
+Continuous age is available for 99 of 101 samples.
+
+The two samples without continuous age are:
+
+- GSM6568354 — donor ALF017 — NDC.Apex,
+- GSM6568343 — donor ALF017 — NDC.Apex.
+
+Both missing-age samples belong to the same donor, ALF017.
+
+No continuous age value will be imputed.
+
+Analyses requiring continuous age will therefore use complete-case filtering only:
+
+- primary cohort: n = 101, 34 donors,
+- continuous-age cohort: n = 99, 33 donors.
+
+ALF017 is excluded only from analyses requiring continuous age.
+
+The frozen primary W5 cohort is not changed.
+
+###### Prespecified sensitivity designs
+
+The following estimable designs were confirmed before model execution:
+
+1. **Primary frozen reference**
+   - `~ 0 + group`
+   - n = 101
+   - full rank: TRUE
+
+2. **Continuous-age sensitivity**
+   - `~ 0 + group + age_numeric`
+   - n = 99
+   - full rank: TRUE
+
+3. **Gender sensitivity**
+   - `~ 0 + group + gender`
+   - n = 101
+   - full rank: TRUE
+
+4. **Continuous-age + gender sensitivity**
+   - `~ 0 + group + age_numeric + gender`
+   - n = 99
+   - full rank: TRUE
+
+5. **Age-group sensitivity**
+   - `~ 0 + group + age_group`
+   - n = 101
+   - full rank: TRUE
+
+The age-group model is a complementary categorical sensitivity analysis and will not be treated as a replacement for continuous age.
+
+###### Sensitivity hierarchy
+
+The principal W7 covariate-robustness analyses will be interpreted in the following order:
+
+1. continuous age,
+2. gender,
+3. continuous age + gender,
+4. age group as complementary categorical sensitivity.
+
+The frozen W5 primary model remains the inferential reference.
+
+###### Repeated-measures structure
+
+The donor structure identified in the frozen analysis will be preserved in sensitivity analyses.
+
+Any W7 model fitting, voom transformation, or duplicate-correlation estimation will produce new sensitivity-specific outputs only.
+
+No W5 model object, W5 result table, W6 enrichment result, W6 pathway ranking, or W6 biological interpretation will be modified.
+
+###### Interpretation rules
+
+W7 will assess robustness of the primary W5 differential-expression findings.
+
+Sensitivity analyses may evaluate:
+
+- preservation of effect direction,
+- change in estimated log-fold change,
+- change in statistical significance,
+- overlap of significant genes,
+- rank stability,
+- and concordance with the frozen primary results.
+
+A covariate-adjusted model will not replace the frozen primary analysis solely because it produces stronger or weaker statistical significance.
+
+Changes will be reported as sensitivity findings rather than as retrospective redefinition of the primary model.
+
+No result will be selected because it better matches prior biological expectations.
