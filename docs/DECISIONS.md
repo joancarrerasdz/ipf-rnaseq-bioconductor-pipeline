@@ -2794,3 +2794,111 @@ The frozen W5 primary analysis remains the reference analysis.
 
 No W5 or W6 result was recalculated, overwritten, re-ranked, or modified
 during this sensitivity analysis.
+
+##### 2026-10-18 — W7 gender sensitivity conclusion
+
+**Status:** FROZEN AFTER SENSITIVITY ANALYSIS
+
+The gender-adjusted sensitivity analysis assessed the robustness of the frozen
+W5 IPF-vs-NDC differential-expression contrast to adjustment for gender.
+
+The frozen W5 primary model remains the reference analysis and was not modified.
+
+###### Sensitivity design
+
+The prespecified gender sensitivity model used:
+
+- formula: `~ 0 + group + gender`
+- cohort: 101 samples
+- 34 donors
+- female samples: 39
+- male samples: 62
+- no missing gender values
+- donor correlation retained through `duplicateCorrelation`
+
+The primary biological contrast remained:
+
+`0.5*(IPF.Apex + IPF.Base) - 0.5*(NDC.Apex + NDC.Base)`
+
+###### Genome-wide effect stability
+
+Comparison of the 15,012 genes shared between the frozen W5 analysis and the
+gender-adjusted W7 sensitivity analysis showed:
+
+- Pearson correlation of logFC: 0.9946
+- Spearman correlation of logFC: 0.9965
+- genome-wide directional concordance: 0.9885
+- median absolute change in logFC: 0.0086
+- 95th percentile absolute change in logFC: 0.1110
+- maximum absolute change in logFC: 1.7114
+
+These results indicate very strong genome-wide stability of the estimated
+IPF-vs-NDC effect after adjustment for gender.
+
+###### FDR overlap
+
+At FDR < 0.05:
+
+- frozen W5 significant genes: 7,898
+- gender-adjusted W7 significant genes: 7,745
+- significant in both analyses: 7,596
+- W5-only significant genes: 302
+- W7-only significant genes: 149
+- significant in neither analysis: 6,965
+
+Thus, approximately 96.2% of W5 FDR-significant genes remained significant
+after gender adjustment, while approximately 98.1% of W7 FDR-significant genes
+were already significant in W5.
+
+###### Shared-FDR effect stability
+
+Among the 7,596 genes significant at FDR < 0.05 in both analyses:
+
+- Pearson correlation of logFC: 0.9972
+- Spearman correlation of logFC: 0.9996
+- median absolute change in logFC: 0.0094
+- 95th percentile absolute change in logFC: 0.1131
+- directional concordance: 1.0000
+- directionally discordant genes: 0
+
+No gene significant in both models changed effect direction.
+
+###### Directional discordance audit
+
+Genome-wide, 172 genes changed effect direction between W5 and the
+gender-adjusted sensitivity model.
+
+All 172 belonged to the `neither_FDR` category.
+
+There were:
+
+- 0 directionally discordant `shared_FDR` genes,
+- 0 directionally discordant `W5_only_FDR` genes,
+- 0 directionally discordant `W7_only_FDR` genes.
+
+Therefore, all observed sign reversals were confined to genes that were not
+FDR-significant in either analysis.
+
+###### Interpretation
+
+Adjustment for gender produced only minor quantitative changes in estimated
+gene-level effects and preserved the principal frozen W5 IPF-vs-NDC
+transcriptomic pattern.
+
+The gender-adjusted model retained nearly all of the frozen W5 FDR-significant
+signal, and the genes significant in both models showed complete directional
+agreement and extremely high effect-size correlation.
+
+The observed genome-wide directional reversals were restricted entirely to
+genes not significant in either analysis and therefore do not indicate
+instability of the reproducible differential-expression signal.
+
+This sensitivity analysis does not establish that gender has no biological or
+statistical influence. It demonstrates that inclusion of gender as a covariate
+does not materially alter the principal frozen W5 IPF-vs-NDC differential-
+expression conclusions.
+
+The frozen W5 primary analysis remains the reference analysis.
+
+No W5 or W6 result was recalculated, overwritten, re-ranked, or modified during
+this sensitivity analysis.
