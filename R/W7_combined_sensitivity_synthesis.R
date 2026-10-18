@@ -199,12 +199,12 @@ stopifnot(
 
 age_samples <- metric_numeric(
   age_qc,
-  "analysis_samples"
+  "age_complete_samples"
 )
 
 age_donors <- metric_numeric(
   age_qc,
-  "analysis_donors"
+  "age_complete_donors"
 )
 
 gender_samples <- metric_numeric(
