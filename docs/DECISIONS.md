@@ -2902,3 +2902,152 @@ The frozen W5 primary analysis remains the reference analysis.
 
 No W5 or W6 result was recalculated, overwritten, re-ranked, or modified during
 this sensitivity analysis.
+
+##### 2026-10-18 — W7 combined sensitivity integration framework
+
+**Status:** FROZEN BEFORE COMBINED ROBUSTNESS SYNTHESIS
+
+Week 7 integrates the independently frozen continuous-age and gender
+sensitivity analyses as robustness assessments of the frozen W5 IPF-vs-NDC
+primary differential-expression analysis.
+
+No new differential-expression model will be fitted during this integration
+step.
+
+No W5, W6, or previously completed W7 result will be recalculated, overwritten,
+re-ranked, or modified.
+
+###### Source analyses
+
+The combined robustness synthesis will use only the frozen outputs from:
+
+1. **Continuous-age sensitivity**
+   - model: `~ 0 + group + age_numeric`
+   - complete-case cohort: 99 samples
+   - 33 donors
+   - frozen W5 reference cohort: 101 samples, 34 donors
+   - no age value was imputed
+
+2. **Gender sensitivity**
+   - model: `~ 0 + group + gender`
+   - cohort: 101 samples
+   - 34 donors
+   - female samples: 39
+   - male samples: 62
+   - no missing gender values
+
+The frozen W5 primary model remains the reference analysis.
+
+###### Common comparison universe
+
+Both sensitivity comparisons use the same frozen 15,012-gene statistical
+universe as the W5 primary analysis.
+
+The primary biological contrast remains the IPF-vs-NDC comparison defined in
+the frozen W5 analysis.
+
+Sensitivity analyses will not redefine the primary contrast.
+
+###### Prespecified robustness dimensions
+
+The combined synthesis will evaluate robustness using the following descriptive
+dimensions:
+
+1. genome-wide logFC correlation with W5,
+2. genome-wide directional concordance with W5,
+3. absolute change in gene-level logFC,
+4. overlap of FDR-significant gene sets,
+5. retention of W5 FDR-significant genes,
+6. stability among genes significant in both models,
+7. location of any directional discordance relative to FDR status.
+
+These metrics will be interpreted jointly.
+
+No single metric will automatically determine whether a sensitivity analysis is
+considered supportive or destabilizing.
+
+###### Effect stability and threshold stability
+
+Effect stability and threshold stability will remain conceptually separate.
+
+High correlation or directional concordance indicates preservation of the
+estimated genome-wide effect pattern.
+
+Changes in the number of genes crossing FDR < 0.05 indicate sensitivity of
+statistical threshold membership.
+
+A reduction in FDR-significant genes will therefore not by itself be described
+as reversal of the biological effect pattern.
+
+Conversely, strong effect correlation will not be used to claim identical
+statistical significance across models.
+
+###### Continuous-age interpretation boundary
+
+The continuous-age sensitivity analysis showed:
+
+- Pearson logFC correlation with W5: approximately 0.9656
+- Spearman logFC correlation with W5: approximately 0.9509
+- genome-wide directional concordance: approximately 0.9127
+- W5 FDR-significant genes retained: approximately 0.6350
+- 5,015 genes significant in both W5 and the age-adjusted analysis
+- complete directional concordance among shared-FDR genes
+
+The age-adjusted analysis therefore shows substantially greater FDR-threshold
+sensitivity than the gender-adjusted analysis while preserving strong
+genome-wide effect similarity and complete directional agreement among genes
+significant in both analyses.
+
+This finding will not be interpreted as evidence that age fully explains the
+W5 IPF-vs-NDC signal.
+
+It will also not be interpreted as evidence that age has no biological or
+statistical influence.
+
+###### Gender interpretation boundary
+
+The gender sensitivity analysis showed:
+
+- Pearson logFC correlation with W5: approximately 0.9946
+- Spearman logFC correlation with W5: approximately 0.9965
+- genome-wide directional concordance: approximately 0.9885
+- W5 FDR-significant genes retained: approximately 0.9618
+- 7,596 genes significant in both W5 and the gender-adjusted analysis
+- complete directional concordance among shared-FDR genes
+
+The gender-adjusted analysis therefore shows very strong stability in both
+effect estimates and FDR-threshold membership.
+
+Observed direction reversals were confined to genes that were not significant
+in either analysis.
+
+###### Cross-sensitivity interpretation rules
+
+The age and gender sensitivities will not be ranked as competing alternative
+primary models.
+
+The analysis showing the largest number of significant genes will not be
+preferred automatically.
+
+The analysis showing the strongest agreement with W5 will not replace W5.
+
+Differences between the sensitivity models will be reported as covariate-specific
+robustness characteristics.
+
+No causal conclusion about age or gender will be inferred from differential
+changes in FDR membership.
+
+###### Combined robustness objective
+
+The final W7 synthesis will determine whether the principal frozen W5
+IPF-vs-NDC transcriptomic pattern remains materially recognizable after the
+prespecified demographic sensitivity adjustments.
+
+The synthesis will distinguish:
+
+- robustness of effect direction,
+- robustness of relative effect magnitude,
+- robustness of FDR-significant membership,
+- and covariate-specific sensitivity of the inferential threshold.
+
+The frozen W5 primary analysis remains the reference analysis throughout.
