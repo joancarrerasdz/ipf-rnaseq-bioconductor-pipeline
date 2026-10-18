@@ -3154,3 +3154,146 @@ The final report will not:
 
 W7 is a robustness analysis of the frozen W5 result, not a retrospective
 redefinition of that result.
+
+##### 2026-10-18 — W7 formal closure certificate
+
+**Status:** W7 CLOSED
+
+Week 7 of the GSE213001 IPF RNA-seq analysis pipeline is formally closed
+after completion of the prespecified continuous-age and gender sensitivity
+analyses, comparison against the frozen W5 primary result, combined
+robustness synthesis, final robustness interpretation, and global closure QA.
+
+###### Frozen primary reference
+
+The frozen W5 IPF-vs-NDC differential-expression analysis remains the
+primary reference analysis.
+
+W7 sensitivity models are additional robustness analyses only.
+
+No W5 or W6 statistical result was recalculated, overwritten, re-ranked,
+or modified during W7.
+
+The frozen W6 state identified by tag `w6-complete` remained unchanged.
+
+###### Continuous-age sensitivity
+
+The prespecified continuous-age sensitivity analysis used:
+
+- formula: `~ 0 + group + age_numeric`
+- complete-case cohort: 99 samples
+- 33 donors
+- no age imputation
+- frozen W5 reference cohort: 101 samples and 34 donors
+
+At FDR < 0.05:
+
+- frozen W5 significant genes: 7,898
+- continuous-age W7 significant genes: 5,277
+- significant in both analyses: 5,015
+- W5-only significant genes: 2,883
+- W7-only significant genes: 262
+- W5 FDR retention: 0.6349709
+
+Genome-wide effect stability included:
+
+- Pearson logFC correlation: 0.9655646
+- Spearman logFC correlation: 0.9508922
+- directional concordance: 0.9127365
+- median absolute change in logFC: 0.0710
+- 95th percentile absolute change in logFC: 0.4072
+- shared-FDR directional concordance: 1.0000
+
+The continuous-age analysis therefore produced a smaller FDR-significant
+discovery set while preserving strong agreement in the principal
+IPF-vs-NDC effect pattern.
+
+###### Gender sensitivity
+
+The prespecified gender sensitivity analysis used:
+
+- formula: `~ 0 + group + gender`
+- cohort: 101 samples
+- 34 donors
+- female samples: 39
+- male samples: 62
+- no missing gender values
+
+At FDR < 0.05:
+
+- frozen W5 significant genes: 7,898
+- gender-adjusted W7 significant genes: 7,745
+- significant in both analyses: 7,596
+- W5-only significant genes: 302
+- W7-only significant genes: 149
+- W5 FDR retention: 0.9617625
+
+Genome-wide effect stability included:
+
+- Pearson logFC correlation: 0.994647
+- Spearman logFC correlation: 0.9964665
+- directional concordance: 0.9885425
+- median absolute change in logFC: 0.0086
+- 95th percentile absolute change in logFC: 0.1110
+- shared-FDR directional concordance: 1.0000
+
+The gender-adjusted analysis therefore showed very strong agreement with
+the frozen W5 primary result in both effect pattern and FDR-significant
+discovery set.
+
+###### Combined robustness interpretation
+
+The two prespecified sensitivity analyses support robustness of the
+principal frozen W5 IPF-vs-NDC differential-expression effect pattern to
+the evaluated age and gender adjustments.
+
+The sensitivity analyses also demonstrate that effect-pattern stability
+and FDR discovery-set stability are distinct properties.
+
+The FDR-significant discovery set was more sensitive to continuous-age
+adjustment than to gender adjustment, while genes significant in both W5
+and each corresponding W7 sensitivity analysis retained complete
+directional concordance.
+
+These results do not establish that age or gender has no biological or
+statistical influence.
+
+###### Final W7 outputs
+
+The final combined sensitivity summary is stored as:
+
+- `results/sensitivity/W7_combined_sensitivity_summary.csv`
+
+with QC metadata:
+
+- `metadata/qc_W7_combined_sensitivity_synthesis.csv`
+
+The final W7 robustness interpretation is stored as:
+
+- `results/sensitivity/W7_combined_robustness_interpretation.csv`
+- `results/sensitivity/W7_combined_robustness_interpretation.md`
+
+with QC metadata:
+
+- `metadata/qc_W7_combined_robustness_interpretation.csv`
+
+###### Closure QA
+
+Global W7 closure QA confirmed that:
+
+- required W7 scripts and outputs are present,
+- required W7 outputs are tracked by Git,
+- W7 R scripts parse successfully,
+- the frozen W6 tag remains unchanged,
+- W7 changes are confined to the prespecified W7 analytical and
+  documentation scope,
+- no files were deleted during W7,
+- source summaries and final robustness interpretation are quantitatively
+  consistent,
+- no model was fitted during closure QA,
+- no W5, W6, or completed W7 result was recalculated during closure QA,
+- the working tree was clean before formal closure,
+- and `git diff --check` reported no whitespace errors.
+
+W7 is therefore considered analytically, interpretively, and
+computationally frozen.
