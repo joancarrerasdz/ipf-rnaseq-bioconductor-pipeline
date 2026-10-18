@@ -1,0 +1,17 @@
+"metric","value"
+"input_rows",2
+"source_qc_rows",12
+"genes",15012
+"W5_FDR_0_05",7898
+"continuous_age_samples",99
+"continuous_age_donors",33
+"continuous_age_FDR_0_05",5277
+"continuous_age_shared_FDR",5015
+"continuous_age_W5_FDR_retention",0.634970878703469
+"continuous_age_shared_FDR_direction_concordance",1
+"gender_samples",101
+"gender_donors",34
+"gender_FDR_0_05",7745
+"gender_shared_FDR",7596
+"gender_W5_FDR_retention",0.961762471511775
+"gender_shared_FDR_direction_concordance",1
