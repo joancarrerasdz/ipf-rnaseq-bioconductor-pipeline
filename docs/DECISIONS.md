@@ -3051,3 +3051,106 @@ The synthesis will distinguish:
 - and covariate-specific sensitivity of the inferential threshold.
 
 The frozen W5 primary analysis remains the reference analysis throughout.
+
+##### 2026-10-18 — W7 combined robustness interpretation framework
+
+**Status:** FROZEN BEFORE FINAL W7 ROBUSTNESS INTERPRETATION
+
+W7.4d integrates the independently completed continuous-age and gender
+sensitivity analyses into a final robustness interpretation of the frozen
+W5 IPF-vs-NDC differential-expression result.
+
+No new differential-expression model will be fitted.
+
+No W5, W6, or previously completed W7 result will be recalculated,
+overwritten, re-ranked, or modified.
+
+###### Source of truth
+
+The primary quantitative input is:
+
+- `results/sensitivity/W7_combined_sensitivity_summary.csv`
+
+The corresponding QC record is:
+
+- `metadata/qc_W7_combined_sensitivity_synthesis.csv`
+
+The frozen W5 primary analysis remains the reference analysis.
+
+###### Interpretation dimensions
+
+Robustness will be described separately for continuous-age adjustment and
+gender adjustment using the already frozen metrics:
+
+1. genome-wide Pearson correlation of logFC,
+2. genome-wide Spearman correlation of logFC,
+3. genome-wide directional concordance,
+4. median absolute change in logFC,
+5. 95th percentile absolute change in logFC,
+6. FDR-significant gene-set overlap,
+7. proportion of frozen W5 FDR-significant genes retained,
+8. directional concordance among genes significant in both analyses.
+
+No new statistical threshold will be introduced during interpretation.
+
+###### Continuous-age interpretation boundary
+
+The continuous-age sensitivity result will be interpreted as assessing
+whether adjustment for age materially changes the principal frozen W5
+IPF-vs-NDC transcriptomic pattern.
+
+A reduction in the number of FDR-significant genes will be distinguished
+from a reversal of the underlying differential-expression pattern.
+
+Genome-wide effect correlation, effect-direction concordance, effect-size
+changes, FDR overlap, and shared-FDR directional concordance will therefore
+be reported separately.
+
+The analysis will not claim that age has no biological or statistical
+influence.
+
+###### Gender interpretation boundary
+
+The gender sensitivity result will be interpreted as assessing whether
+adjustment for gender materially changes the principal frozen W5
+IPF-vs-NDC transcriptomic pattern.
+
+Effect-size stability and FDR-set stability will be reported independently.
+
+The analysis will not claim that gender has no biological or statistical
+influence.
+
+###### Cross-sensitivity interpretation
+
+The two sensitivity analyses will be compared descriptively.
+
+The final interpretation may state which covariate produced the larger
+change in the FDR-significant set, provided that statement follows directly
+from the frozen quantitative summaries.
+
+The final interpretation may distinguish:
+
+- stability of effect direction and relative effect magnitude,
+- from stability of the FDR-significant discovery set.
+
+These concepts will not be treated as equivalent.
+
+###### Final claim boundary
+
+The strongest permitted W7 conclusion is that the frozen W5 IPF-vs-NDC
+differential-expression pattern is robust, to the extent supported by the
+prespecified age- and gender-adjusted sensitivity analyses.
+
+The final report will not:
+
+- redefine the W5 primary analysis,
+- select a sensitivity model as a replacement primary model,
+- infer causality,
+- claim absence of age or gender effects,
+- introduce new covariates,
+- recompute enrichment,
+- modify W6 biological interpretation,
+- or promote genes because they better match prior biological expectations.
+
+W7 is a robustness analysis of the frozen W5 result, not a retrospective
+redefinition of that result.
