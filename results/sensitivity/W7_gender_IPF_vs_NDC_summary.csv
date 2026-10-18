@@ -1,0 +1,16 @@
+"metric","value"
+"tested_genes",15012
+"analysis_samples",101
+"analysis_donors",34
+"female_samples",39
+"male_samples",62
+"duplicateCorrelation_pass1",0.332164025983163
+"duplicateCorrelation_pass2",0.332173463272126
+"raw_p_lt_0.05",8589
+"fdr_lt_0.05",7745
+"fdr_lt_0.05_logFC_positive",3778
+"fdr_lt_0.05_logFC_negative",3967
+"abs_logFC_ge_1",1849
+"fdr_lt_0.05_and_abs_logFC_ge_1",1730
+"min_raw_p",1.30548365560179e-27
+"min_fdr",1.0688782300235e-23
