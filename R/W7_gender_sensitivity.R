@@ -163,7 +163,7 @@ group_gender <- table(
 
 stopifnot(
   identical(
-    unname(group_gender),
+    unname(unclass(group_gender)),
     matrix(
       c(
         11L, 11L, 9L, 8L,
