@@ -3450,3 +3450,105 @@ record.
 
 The frozen W5 primary analysis remains the principal inferential
 reference throughout W8.
+
+##### 2026-10-22 — W8 primary differential-expression figure specification
+
+**Status:** FROZEN BEFORE W8 PRIMARY FIGURE EXECUTION
+
+The existing W5 differential-expression diagnostics were visually reviewed
+before creation of the final W8 portfolio figure.
+
+The existing primary volcano plot is scientifically valid and already
+represents the frozen W5 IPF-vs-NDC differential-expression analysis.
+
+The W8 portfolio layer will therefore not replace the analytical result.
+Instead, it will generate a presentation-oriented version directly from
+the frozen W5 gene-level result table.
+
+###### Primary figure
+
+The final W8 primary differential-expression visualization will be a
+volcano plot.
+
+Source:
+
+`results/differential_expression/primary_IPF_vs_NDC_all_genes.csv`
+
+The figure will use only statistical quantities already present in that
+frozen W5 result.
+
+No differential-expression model will be refitted.
+
+No P value or adjusted P value will be recalculated.
+
+###### Statistical encoding
+
+The horizontal axis will represent frozen W5 log2 fold change:
+
+- positive values = higher expression in IPF relative to NDC,
+- negative values = lower expression in IPF relative to NDC.
+
+The vertical axis will represent the frozen W5 BH-adjusted significance
+as `-log10(adj.P.Val)`.
+
+The inferential significance criterion remains exactly:
+
+`FDR < 0.05`
+
+No additional effect-size threshold will be introduced.
+
+###### Visual classes
+
+Genes will be represented using three descriptive classes:
+
+1. not FDR-significant,
+2. FDR-significant and higher in IPF,
+3. FDR-significant and lower in IPF.
+
+Visual styling may distinguish these classes through colour, point
+opacity, point size, or other non-inferential graphical properties.
+
+Such styling does not alter the frozen analytical classification.
+
+###### Gene labels
+
+A limited number of genes may be labelled to improve interpretability.
+
+Labels must satisfy all of the following:
+
+- gene identifiers must originate from the frozen W5 statistical universe,
+- symbols must come from the existing frozen annotation mapping,
+- mappings must be unambiguous for the displayed gene,
+- selection must follow an explicit reproducible rule,
+- and genes must not be selected because they support a preferred
+  biological narrative.
+
+The labelling rule will be encoded directly in the W8 visualization
+script and documented in its QC output.
+
+###### Existing MA plot
+
+The existing W5 MA plot remains a valid analytical diagnostic.
+
+It will be retained as a supplementary figure rather than used as the
+principal W8 portfolio visualization.
+
+No replacement MA analysis is required for W8.
+
+###### Output policy
+
+The W8 primary figure will be stored separately from the frozen W5
+diagnostic figures.
+
+Existing W5 figures will not be overwritten.
+
+The W8 figure will be generated at publication-quality resolution and
+will remain reproducible solely from frozen result and annotation files.
+
+###### Interpretation boundary
+
+The purpose of W8 restyling is communication, not analytical optimization.
+
+Visual presentation must not redefine significance, alter effect sizes,
+change gene rankings for inferential purposes, or modify any frozen
+W5-W7 result.
