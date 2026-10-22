@@ -3677,3 +3677,204 @@ It will not:
 The frozen W5 primary differential-expression analysis remains the principal
 inferential reference.
 
+
+###### 2026-10-22 — W8 robustness visualization specification
+
+**Status:** FROZEN BEFORE W8 ROBUSTNESS FIGURE EXECUTION
+
+W8.4 will generate a portfolio-oriented visual summary of the sensitivity and
+robustness analyses already frozen during W7.
+
+No differential-expression model, covariate-adjusted model, P value, adjusted
+P value, effect estimate, gene classification, or robustness statistic will be
+recomputed during W8.4.
+
+The frozen W5 primary differential-expression analysis remains the principal
+inferential reference.
+
+###### Visual objective
+
+The final W8 robustness visualization will communicate how strongly the frozen
+W5 IPF-vs-NDC differential-expression result agrees with the two prespecified
+W7 sensitivity analyses:
+
+1. continuous-age adjustment,
+2. gender adjustment.
+
+The visualization will distinguish stability of the genome-wide effect pattern
+from stability of the FDR-significant discovery set.
+
+This distinction is required because a change in the number of genes satisfying
+FDR < 0.05 does not necessarily imply reversal of the underlying
+differential-expression pattern.
+
+###### Frozen source
+
+The primary quantitative source will be:
+
+`results/sensitivity/W7_combined_sensitivity_summary.csv`
+
+The frozen interpretive sources are:
+
+- `results/sensitivity/W7_combined_robustness_interpretation.csv`
+- `results/sensitivity/W7_combined_robustness_interpretation.md`
+
+No value from these sources will be modified during visualization.
+
+###### Frozen comparison universe
+
+Both W7 sensitivity analyses are compared against the frozen W5 primary
+IPF-vs-NDC result.
+
+The common statistical universe contains 15,012 genes.
+
+The frozen W5 primary analysis contains 7,898 genes satisfying FDR < 0.05.
+
+For continuous-age adjustment:
+
+- analysis samples = 99,
+- analysis donors = 33,
+- sensitivity FDR-significant genes = 5,277,
+- shared FDR-significant genes with W5 = 5,015,
+- W5 FDR retention = 0.6349709,
+- FDR Jaccard = 0.6145833,
+- Pearson logFC correlation = 0.9655646,
+- Spearman logFC correlation = 0.9508922,
+- genome-wide directional concordance = 0.9127365,
+- shared-FDR directional concordance = 1.0000000,
+- median absolute delta logFC = 0.0710340,
+- 95th percentile absolute delta logFC = 0.4071894,
+- maximum absolute delta logFC = 1.9974491.
+
+For gender adjustment:
+
+- analysis samples = 101,
+- analysis donors = 34,
+- sensitivity FDR-significant genes = 7,745,
+- shared FDR-significant genes with W5 = 7,596,
+- W5 FDR retention = 0.9617625,
+- FDR Jaccard = 0.9439543,
+- Pearson logFC correlation = 0.9946470,
+- Spearman logFC correlation = 0.9964665,
+- genome-wide directional concordance = 0.9885425,
+- shared-FDR directional concordance = 1.0000000,
+- median absolute delta logFC = 0.0086076,
+- 95th percentile absolute delta logFC = 0.1110341,
+- maximum absolute delta logFC = 1.7113855.
+
+###### Figure structure
+
+The primary W8.4 portfolio figure will use a compact robustness scorecard with
+three descriptive metric groups.
+
+##### 1. Effect-pattern agreement
+
+The first section will display:
+
+- Pearson correlation of logFC with frozen W5,
+- Spearman correlation of logFC with frozen W5,
+- genome-wide directional concordance with frozen W5,
+- shared-FDR directional concordance with frozen W5.
+
+These values describe agreement of the estimated effect pattern.
+
+They are not new hypothesis tests.
+
+##### 2. Discovery-set stability
+
+The second section will display:
+
+- W5 FDR retention,
+- FDR Jaccard similarity,
+- proportion of sensitivity FDR-significant genes already present in W5.
+
+Where useful for interpretation, the corresponding frozen gene counts may also
+be displayed as text annotations.
+
+This panel describes overlap between threshold-defined discovery sets.
+
+It must not be presented as a measure of biological effect magnitude.
+
+##### 3. Effect-size perturbation
+
+The third section will display:
+
+- median absolute change in logFC,
+- 95th percentile absolute change in logFC,
+- maximum absolute change in logFC.
+
+These quantities describe the magnitude of change in frozen gene-level effect
+estimates after covariate adjustment.
+
+No additional cutoff for acceptable or unacceptable change will be introduced.
+
+###### Visual encoding
+
+Continuous-age and gender sensitivity analyses will be visually distinguishable
+through consistent non-inferential styling.
+
+Values will be displayed directly from the frozen W7 summary.
+
+Metrics bounded between 0 and 1 will retain their natural scale.
+
+Absolute delta-logFC metrics will be displayed on their own scale and will not
+be normalized against the agreement metrics.
+
+No composite robustness score will be calculated.
+
+No metric will be weighted or combined into a new statistic.
+
+###### Interpretive boundary
+
+The visualization may state that:
+
+- the genome-wide effect pattern remained strongly concordant with frozen W5
+  under both evaluated adjustments,
+- continuous-age adjustment changed FDR-defined discovery-set membership more
+  substantially than gender adjustment,
+- shared-FDR genes retained complete directional concordance in both
+  sensitivity analyses.
+
+The visualization must not state that:
+
+- age has no effect,
+- gender has no effect,
+- one covariate is biologically more important than the other,
+- failure to retain FDR significance represents reversal of biological effect,
+- the W7 sensitivity analyses replace the frozen W5 primary model.
+
+The frozen W7 interpretation remains the source of truth.
+
+###### Output policy
+
+The final robustness figure will be written to:
+
+- `figures/final/W8_robustness_summary.png`
+- `figures/final/W8_robustness_summary.pdf`
+
+The corresponding visualization QC record will be written to:
+
+- `metadata/qc_W8_robustness_visualization.csv`
+
+Existing W5, W6, W7, W8.2, and W8.3 analytical or visualization outputs will
+not be overwritten.
+
+###### Reproducibility boundary
+
+W8.4 will consume only frozen W7 outputs.
+
+It will not:
+
+- refit the frozen W5 primary differential-expression model,
+- refit either W7 sensitivity model,
+- recalculate P values,
+- recalculate adjusted P values,
+- recalculate logFC estimates,
+- redefine the FDR threshold,
+- introduce an effect-size significance threshold,
+- alter gene membership in any frozen result,
+- modify W6 biological interpretation,
+- modify any frozen W7 robustness result.
+
+The purpose of W8.4 is communication of frozen robustness evidence, not
+additional statistical inference.
