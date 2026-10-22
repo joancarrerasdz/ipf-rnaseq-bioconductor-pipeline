@@ -504,19 +504,6 @@ stopifnot(
   !any(is.na(labels$SYMBOL))
 )
 
-labels$label_x <- labels$logFC +
-  ifelse(
-    labels$logFC > 0,
-    0.18,
-    -0.18
-  )
-
-labels$label_hjust <- ifelse(
-  labels$logFC > 0,
-  0,
-  1
-)
-
 cat("\n===== LABEL RULE =====\n")
 cat(
   "Five lowest-FDR mapped genes per direction.\n"
@@ -620,30 +607,24 @@ p <- ggplot(
     linewidth = 0.45,
     colour = "grey45"
   ) +
-  geom_segment(
+  ggrepel::geom_text_repel(
     data = labels,
     aes(
       x = logFC,
-      xend = label_x,
       y = minus_log10_FDR,
-      yend = minus_log10_FDR
+      label = SYMBOL
     ),
     inherit.aes = FALSE,
-    linewidth = 0.3,
-    colour = "grey45"
-  ) +
-  geom_text(
-    data = labels,
-    aes(
-      x = label_x,
-      y = minus_log10_FDR,
-      label = SYMBOL,
-      hjust = label_hjust
-    ),
-    inherit.aes = FALSE,
-    size = 3.25,
+    size = 3.15,
     fontface = "bold",
-    check_overlap = TRUE
+    box.padding = 0.50,
+    point.padding = 0.25,
+    min.segment.length = 0,
+    segment.colour = "grey55",
+    segment.size = 0.30,
+    max.overlaps = Inf,
+    force = 1.4,
+    seed = 213001
   ) +
   scale_colour_manual(
     values = status_colours,
