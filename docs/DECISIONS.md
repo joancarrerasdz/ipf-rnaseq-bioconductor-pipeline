@@ -3297,3 +3297,156 @@ Global W7 closure QA confirmed that:
 
 W7 is therefore considered analytically, interpretively, and
 computationally frozen.
+
+##### 2026-10-22 — W8 final reporting and portfolio specification
+
+**Status:** FROZEN BEFORE W8 REPORTING EXECUTION
+
+Week 8 converts the analytically frozen GSE213001 IPF RNA-seq analysis
+into a final reproducible portfolio deliverable.
+
+W8 is a reporting, visualization, reproducibility, and
+repository-presentation layer.
+
+No new biological hypothesis testing is introduced in W8.
+
+No W5, W6, or W7 inferential result will be recalculated, overwritten,
+re-ranked, or modified.
+
+###### Frozen analytical sources
+
+W8 will consume only previously frozen analytical outputs.
+
+The primary differential-expression reference remains the frozen W5
+IPF-vs-NDC result.
+
+The biological interpretation reference remains the frozen W6 final
+biological report.
+
+The robustness reference remains the frozen W7 sensitivity-analysis
+synthesis and final robustness interpretation.
+
+The `w7-complete` tag defines the immutable analytical starting point
+for W8.
+
+###### W8 deliverable 1 — primary differential-expression visualization
+
+W8 will generate a publication-quality visual summary of the frozen
+primary IPF-vs-NDC differential-expression result.
+
+The visualization may display gene-level effect size and inferential
+significance already present in the frozen W5 output.
+
+It will not:
+
+- recompute differential expression,
+- modify P values or adjusted P values,
+- introduce a new significance threshold,
+- re-rank genes for inferential purposes,
+- or redefine the primary contrast.
+
+###### W8 deliverable 2 — biological interpretation visualization
+
+W8 will generate a compact visual synthesis of the frozen W6 biological
+interpretation.
+
+The visualization will use only already frozen pathway/theme assignments,
+evidence classifications, directions, and controlled biological statements.
+
+It will not recalculate enrichment or introduce new pathway-level
+statistical inference.
+
+###### W8 deliverable 3 — robustness visualization
+
+W8 will generate a visual comparison of the frozen W5 primary result with
+the completed W7 continuous-age and gender sensitivity analyses.
+
+The figure will describe robustness using already frozen metrics such as:
+
+- genome-wide logFC correlation,
+- directional concordance,
+- absolute logFC change,
+- FDR-set overlap,
+- frozen-W5 FDR retention,
+- and shared-FDR directional concordance.
+
+No sensitivity model will be refitted during W8 reporting.
+
+###### W8 deliverable 4 — final quantitative summary
+
+W8 will generate a compact machine-readable summary connecting the
+principal frozen results from W5, W6, and W7.
+
+The table will summarize existing results only.
+
+It will not constitute a new inferential analysis.
+
+###### W8 deliverable 5 — reproducible final report
+
+A final reproducible Quarto report will integrate:
+
+1. study objective and dataset,
+2. cohort and analytical design,
+3. quality-control overview,
+4. frozen W5 differential-expression results,
+5. frozen W6 pathway-level and biological interpretation,
+6. frozen W7 sensitivity and robustness results,
+7. limitations,
+8. reproducibility information,
+9. and final conclusions.
+
+The report will read frozen result files rather than rerunning the
+analytical pipeline.
+
+Rendering the report must therefore remain separate from statistical
+model execution.
+
+###### W8 deliverable 6 — portfolio README
+
+The repository README will be updated to reflect the actual completed
+state of the project.
+
+It will provide a recruiter- and reviewer-friendly overview of:
+
+- the biological question,
+- public dataset,
+- analytical workflow,
+- repository structure,
+- principal results,
+- robustness analyses,
+- reproducibility strategy,
+- final report,
+- and limitations.
+
+The README will distinguish completed work from future extensions.
+
+###### W8 deliverable 7 — repository closure QA
+
+Final W8 QA will verify:
+
+- required portfolio outputs exist,
+- frozen analytical sources remain unchanged,
+- reporting scripts are tracked,
+- final figures are tracked,
+- report source and rendered report are tracked where applicable,
+- README and reporting documentation are internally consistent,
+- `git diff --check` is clean,
+- `main` is synchronized with `origin/main`,
+- and all W5-W8 provenance remains traceable through Git history and tags.
+
+After successful closure QA, W8 will be frozen with the annotated tag
+`w8-complete`.
+
+###### Interpretation boundary
+
+W8 may improve communication, visualization, organization, and
+reproducibility of the existing analysis.
+
+W8 must not improve apparent scientific performance by selectively
+changing previously frozen analytical results.
+
+Visual design decisions must remain subordinate to the frozen analytical
+record.
+
+The frozen W5 primary analysis remains the principal inferential
+reference throughout W8.
