@@ -3594,11 +3594,14 @@ introducing a new pathway taxonomy.
 
 The themes represented in the frozen W6 report include:
 
-1. mucosal / antimicrobial / innate immune response,
-2. leukocyte / neutrophil-associated processes,
-3. surfactant / lipid / sterol metabolism,
-4. mitochondrial respiration / oxidative phosphorylation / ATP production,
-5. broad signalling or mixed processes requiring pathway-specific caution.
+1. extracellular-matrix / collagen / fibrotic remodeling,
+2. cilium / axoneme / microtubule-associated motility,
+3. tissue-development / structural remodeling,
+4. mucosal / antimicrobial / innate immune response,
+5. leukocyte / neutrophil-associated processes,
+6. surfactant / lipid / sterol metabolism,
+7. mitochondrial respiration / oxidative phosphorylation / ATP production,
+8. broad signalling or mixed processes requiring pathway-specific caution.
 
 The wording used in the final figure may be shortened only for visual
 readability. The biological meaning must remain unchanged.
