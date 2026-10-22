@@ -3552,3 +3552,125 @@ The purpose of W8 restyling is communication, not analytical optimization.
 Visual presentation must not redefine significance, alter effect sizes,
 change gene rankings for inferential purposes, or modify any frozen
 W5-W7 result.
+
+###### 2026-10-22 — W8 biological interpretation figure specification
+
+**Status:** FROZEN BEFORE W8 BIOLOGICAL FIGURE EXECUTION
+
+W8.3 will generate a portfolio-oriented visualization of the biological
+interpretation already frozen during W6.
+
+No enrichment analysis, differential-expression analysis, gene ranking, or
+biological hypothesis testing will be recomputed during W8.3.
+
+The frozen W6 biological report remains the interpretive source of truth.
+
+###### Visual objective
+
+The final W8 biological interpretation figure will summarize the convergence
+of pathway-level evidence supporting the controlled biological themes defined
+during W6.
+
+The figure will complement the W8 primary differential-expression volcano:
+
+- W8.2 communicates the frozen gene-level IPF-vs-NDC result.
+- W8.3 communicates the frozen pathway-level biological interpretation.
+
+###### Frozen evidence streams
+
+Only pathway-support counts already reported in the frozen W6 final biological
+report will be used:
+
+1. GO Biological Process over-representation analysis,
+2. Reactome over-representation analysis,
+3. GO Biological Process ranked enrichment.
+
+No enrichment statistic or adjusted P value will be recalculated.
+
+###### Frozen biological themes
+
+The figure will retain the controlled W6 biological themes rather than
+introducing a new pathway taxonomy.
+
+The themes represented in the frozen W6 report include:
+
+1. mucosal / antimicrobial / innate immune response,
+2. leukocyte / neutrophil-associated processes,
+3. surfactant / lipid / sterol metabolism,
+4. mitochondrial respiration / oxidative phosphorylation / ATP production,
+5. broad signalling or mixed processes requiring pathway-specific caution.
+
+The wording used in the final figure may be shortened only for visual
+readability. The biological meaning must remain unchanged.
+
+###### Directional structure
+
+Evidence will be displayed separately for:
+
+- higher in IPF relative to NDC,
+- lower in IPF relative to NDC.
+
+These directions preserve the frozen W5 IPF-vs-NDC contrast.
+
+No direction will be redefined during W8.
+
+###### Visual encoding
+
+The primary W8.3 visualization will use an evidence-convergence matrix.
+
+Rows:
+- frozen biological themes.
+
+Columns:
+- GO:BP ORA,
+- Reactome ORA,
+- GO:BP ranked enrichment.
+
+Panels:
+- Higher in IPF,
+- Lower in IPF.
+
+Point size:
+- number of frozen pathway-level findings supporting the corresponding
+  theme/evidence-stream/direction combination.
+
+Zero-support combinations will be represented explicitly.
+
+The visualization is descriptive. Point size is not an effect size and must
+not be interpreted as biological magnitude.
+
+###### Interpretive boundary
+
+Absence of pathway-level support is not evidence of biological absence.
+
+A theme supported by multiple frozen evidence streams may be described as
+showing convergent pathway-level evidence.
+
+A theme supported by only one evidence stream must be described as limited or
+source-specific pathway-level evidence.
+
+Broad signalling or mixed-process themes retain the pathway-specific caution
+established in W6.
+
+The figure must not state that a biological process is activated, inhibited,
+causal, protective, or pathogenic unless such a conclusion was already
+established in the frozen W6 interpretation.
+
+###### Reproducibility boundary
+
+W8.3 will consume only frozen W6 outputs.
+
+It will not:
+
+- rerun GO enrichment,
+- rerun Reactome enrichment,
+- rerun ranked enrichment,
+- change enrichment thresholds,
+- select a more favorable result,
+- recompute W5 differential expression,
+- modify W6 interpretation,
+- modify W7 sensitivity results.
+
+The frozen W5 primary differential-expression analysis remains the principal
+inferential reference.
+
