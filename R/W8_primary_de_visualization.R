@@ -641,7 +641,7 @@ p <- ggplot(
     guide = "none"
   ) +
   labs(
-    title = "Primary differential expression — IPF vs NDC",
+    title = "Primary differential expression - IPF vs NDC",
     subtitle = subtitle_text,
     x = "log2 fold change (IPF relative to NDC)",
     y = expression(
