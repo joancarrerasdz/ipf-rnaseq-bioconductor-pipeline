@@ -1,0 +1,49 @@
+"theme","direction","evidence_class","interpretive_role","evidence_stream","support_count","theme_order","direction_order","stream_order"
+"extracellular-matrix / collagen / fibrotic remodeling","higher_in_IPF","triangulated","primary_convergent_evidence","GO:BP ORA",2,1,1,1
+"extracellular-matrix / collagen / fibrotic remodeling","higher_in_IPF","triangulated","primary_convergent_evidence","Reactome ORA",8,1,1,2
+"extracellular-matrix / collagen / fibrotic remodeling","higher_in_IPF","triangulated","primary_convergent_evidence","GO:BP ranked enrichment",3,1,1,3
+"extracellular-matrix / collagen / fibrotic remodeling","lower_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ORA",0,1,2,1
+"extracellular-matrix / collagen / fibrotic remodeling","lower_in_IPF","not_represented","no_controlled_pathway_support","Reactome ORA",0,1,2,2
+"extracellular-matrix / collagen / fibrotic remodeling","lower_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ranked enrichment",0,1,2,3
+"cilium / axoneme / microtubule-associated motility","higher_in_IPF","cross_method","secondary_convergent_evidence","GO:BP ORA",11,2,1,1
+"cilium / axoneme / microtubule-associated motility","higher_in_IPF","cross_method","secondary_convergent_evidence","Reactome ORA",0,2,1,2
+"cilium / axoneme / microtubule-associated motility","higher_in_IPF","cross_method","secondary_convergent_evidence","GO:BP ranked enrichment",6,2,1,3
+"cilium / axoneme / microtubule-associated motility","lower_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ORA",0,2,2,1
+"cilium / axoneme / microtubule-associated motility","lower_in_IPF","not_represented","no_controlled_pathway_support","Reactome ORA",0,2,2,2
+"cilium / axoneme / microtubule-associated motility","lower_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ranked enrichment",0,2,2,3
+"tissue-development / structural remodeling","higher_in_IPF","triangulated","primary_convergent_evidence","GO:BP ORA",2,3,1,1
+"tissue-development / structural remodeling","higher_in_IPF","triangulated","primary_convergent_evidence","Reactome ORA",1,3,1,2
+"tissue-development / structural remodeling","higher_in_IPF","triangulated","primary_convergent_evidence","GO:BP ranked enrichment",3,3,1,3
+"tissue-development / structural remodeling","lower_in_IPF","single_stream","contextual_single_stream_evidence","GO:BP ORA",0,3,2,1
+"tissue-development / structural remodeling","lower_in_IPF","single_stream","contextual_single_stream_evidence","Reactome ORA",3,3,2,2
+"tissue-development / structural remodeling","lower_in_IPF","single_stream","contextual_single_stream_evidence","GO:BP ranked enrichment",0,3,2,3
+"mucosal / antimicrobial / innate immune response","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ORA",0,4,1,1
+"mucosal / antimicrobial / innate immune response","higher_in_IPF","not_represented","no_controlled_pathway_support","Reactome ORA",0,4,1,2
+"mucosal / antimicrobial / innate immune response","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ranked enrichment",0,4,1,3
+"mucosal / antimicrobial / innate immune response","lower_in_IPF","cross_resource","secondary_convergent_evidence","GO:BP ORA",6,4,2,1
+"mucosal / antimicrobial / innate immune response","lower_in_IPF","cross_resource","secondary_convergent_evidence","Reactome ORA",1,4,2,2
+"mucosal / antimicrobial / innate immune response","lower_in_IPF","cross_resource","secondary_convergent_evidence","GO:BP ranked enrichment",0,4,2,3
+"leukocyte / neutrophil-associated processes","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ORA",0,5,1,1
+"leukocyte / neutrophil-associated processes","higher_in_IPF","not_represented","no_controlled_pathway_support","Reactome ORA",0,5,1,2
+"leukocyte / neutrophil-associated processes","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ranked enrichment",0,5,1,3
+"leukocyte / neutrophil-associated processes","lower_in_IPF","cross_resource","secondary_convergent_evidence","GO:BP ORA",3,5,2,1
+"leukocyte / neutrophil-associated processes","lower_in_IPF","cross_resource","secondary_convergent_evidence","Reactome ORA",1,5,2,2
+"leukocyte / neutrophil-associated processes","lower_in_IPF","cross_resource","secondary_convergent_evidence","GO:BP ranked enrichment",0,5,2,3
+"surfactant / lipid / sterol metabolism","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ORA",0,6,1,1
+"surfactant / lipid / sterol metabolism","higher_in_IPF","not_represented","no_controlled_pathway_support","Reactome ORA",0,6,1,2
+"surfactant / lipid / sterol metabolism","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ranked enrichment",0,6,1,3
+"surfactant / lipid / sterol metabolism","lower_in_IPF","cross_resource","secondary_convergent_evidence","GO:BP ORA",1,6,2,1
+"surfactant / lipid / sterol metabolism","lower_in_IPF","cross_resource","secondary_convergent_evidence","Reactome ORA",2,6,2,2
+"surfactant / lipid / sterol metabolism","lower_in_IPF","cross_resource","secondary_convergent_evidence","GO:BP ranked enrichment",0,6,2,3
+"mitochondrial respiration / oxidative phosphorylation / ATP production","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ORA",0,7,1,1
+"mitochondrial respiration / oxidative phosphorylation / ATP production","higher_in_IPF","not_represented","no_controlled_pathway_support","Reactome ORA",0,7,1,2
+"mitochondrial respiration / oxidative phosphorylation / ATP production","higher_in_IPF","not_represented","no_controlled_pathway_support","GO:BP ranked enrichment",0,7,1,3
+"mitochondrial respiration / oxidative phosphorylation / ATP production","lower_in_IPF","single_stream","contextual_single_stream_evidence","GO:BP ORA",0,7,2,1
+"mitochondrial respiration / oxidative phosphorylation / ATP production","lower_in_IPF","single_stream","contextual_single_stream_evidence","Reactome ORA",0,7,2,2
+"mitochondrial respiration / oxidative phosphorylation / ATP production","lower_in_IPF","single_stream","contextual_single_stream_evidence","GO:BP ranked enrichment",12,7,2,3
+"broad signalling or mixed processes requiring pathway-specific caution","higher_in_IPF","triangulated","primary_convergent_evidence","GO:BP ORA",5,8,1,1
+"broad signalling or mixed processes requiring pathway-specific caution","higher_in_IPF","triangulated","primary_convergent_evidence","Reactome ORA",11,8,1,2
+"broad signalling or mixed processes requiring pathway-specific caution","higher_in_IPF","triangulated","primary_convergent_evidence","GO:BP ranked enrichment",9,8,1,3
+"broad signalling or mixed processes requiring pathway-specific caution","lower_in_IPF","triangulated","primary_convergent_evidence","GO:BP ORA",10,8,2,1
+"broad signalling or mixed processes requiring pathway-specific caution","lower_in_IPF","triangulated","primary_convergent_evidence","Reactome ORA",13,8,2,2
+"broad signalling or mixed processes requiring pathway-specific caution","lower_in_IPF","triangulated","primary_convergent_evidence","GO:BP ranked enrichment",8,8,2,3
