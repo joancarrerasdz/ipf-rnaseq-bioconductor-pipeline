@@ -1,0 +1,395 @@
+---
+title: "Reproducible RNA-seq Analysis of Idiopathic Pulmonary Fibrosis"
+subtitle: "GSE213001 | Donor-aware IPF vs NDC transcriptomic analysis"
+author: "Joan Carreras Díaz"
+date: "2026-10-23"
+
+format:
+  html:
+    output-file: final_report.html
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    smooth-scroll: true
+    embed-resources: true
+    fig-responsive: true
+  pdf:
+    output-file: final_report.pdf
+    toc: true
+    number-sections: true
+    geometry:
+      - margin=1in
+
+execute:
+  enabled: false
+---
+
+# Study objective and dataset
+
+This project provides a reproducible bulk RNA-seq analysis of idiopathic
+pulmonary fibrosis (IPF) using public data from GEO accession **GSE213001**.
+
+The primary scientific question is:
+
+> Which transcriptional programs distinguish idiopathic pulmonary fibrosis
+> from non-diseased lung tissue while accounting for anatomical lung region and
+> repeated samples from the same donor?
+
+The primary comparison is **IPF versus non-diseased controls (NDC)**.
+
+The complete source dataset contains 139 samples from 46 donors across IPF,
+NDC, ILD, and CLAD disease groups. The primary IPF-vs-NDC analysis was
+restricted according to the prespecified study design.
+
+Because multiple tissue samples may originate from the same donor, tissue
+samples were not treated as independent biological replicates.
+
+The project follows a staged analytical structure:
+
+- W1-W4: data ingestion, metadata validation, quality control, filtering,
+  normalization, and ordination;
+- W5: frozen primary donor-aware differential-expression analysis;
+- W6: frozen controlled pathway enrichment and biological interpretation;
+- W7: frozen age and gender sensitivity analyses and robustness synthesis;
+- W8: portfolio visualization, final reporting, and reproducibility
+  communication.
+
+W8 does not constitute a new inferential analysis stage.
+
+# Cohort and analytical design
+
+The planned IPF-vs-NDC cohort initially contained 103 samples from 34 donors.
+
+Two samples had missing lung-region information. Because lung region was a
+prespecified adjustment variable, those samples were excluded from the primary
+model before differential-expression testing.
+
+The frozen primary cohort therefore contains:
+
+| Group | Samples |
+|---|---:|
+| IPF | 61 |
+| NDC | 40 |
+| **Total** | **101** |
+
+These 101 samples represent **34 donors**.
+
+The anatomical distribution is:
+
+| Group | Apex | Base | Total |
+|---|---:|---:|---:|
+| IPF | 30 | 31 | 61 |
+| NDC | 22 | 18 | 40 |
+| **Total** | **52** | **49** | **101** |
+
+The frozen primary statistical model is a donor-aware limma-voom analysis with
+the fixed-effects structure:
+
+`~ diseasegroup + lunglocation`
+
+Repeated observations from the same donor are handled using
+`duplicateCorrelation()` rather than by treating samples as independent
+replicates.
+
+The final estimated consensus within-donor correlation was approximately
+**0.316**.
+
+The principal inferential effect is the disease contrast **IPF versus NDC**,
+adjusted for anatomical lung region.
+
+Age and gender were not automatically added to the primary model. They were
+evaluated later as prespecified W7 sensitivity analyses so that their impact on
+the frozen W5 result could be assessed without redefining the primary
+analysis.
+
+# Quality-control overview
+
+Quality control was completed before formal differential-expression testing.
+
+The workflow included:
+
+- explicit alignment of sample metadata to count-matrix columns;
+- validation of donor and disease-group information;
+- assessment of repeated samples within donors;
+- library-level count QC;
+- review of technical variables;
+- low-count filtering;
+- TMM normalization;
+- exploratory PCA and edgeR MDS;
+- inspection of sample relationships and possible technical structure;
+- preparation of the donor-aware primary design.
+
+No sample was excluded solely because of PCA or MDS position or because its
+removal would improve biological group separation.
+
+The raw statistical universe contained 15,065 genes before low-count
+filtering. The frozen analysis universe contains **15,012 genes**.
+
+No filtering, normalization, sample exclusion, or QC threshold is recalculated
+during this final report.
+
+# Frozen W5 differential-expression results
+
+The W5 analysis is the principal inferential result of the project.
+
+Across the frozen 15,012-gene universe:
+
+| W5 metric | Result |
+|---|---:|
+| Genes tested | 15,012 |
+| Genes with raw P < 0.05 | 8,679 |
+| Genes with FDR < 0.05 | 7,898 |
+| FDR-significant, higher in IPF | 3,964 |
+| FDR-significant, lower in IPF | 3,934 |
+| Genes with absolute log2FC >= 1 | 1,884 |
+| FDR < 0.05 and absolute log2FC >= 1 | 1,861 |
+| Minimum raw P value | 1.10 × 10^-28 |
+| Minimum BH-adjusted P value | 1.65 × 10^-24 |
+
+The prespecified inferential significance criterion is **FDR < 0.05**.
+
+No additional effect-size significance threshold is imposed on the primary
+classification.
+
+The balance between genes higher and lower in IPF indicates extensive
+transcriptomic differences in both directions rather than a globally
+unidirectional shift.
+
+![Frozen W5 primary donor-aware differential-expression result. Orange points represent FDR-significant genes higher in IPF, blue points represent FDR-significant genes lower in IPF, and grey points do not satisfy FDR < 0.05. The ten displayed labels are deterministic presentation labels selected from the frozen result and do not redefine inferential ranking.](../figures/final/W8_primary_IPF_vs_NDC_volcano.png){fig-alt="Volcano plot of the frozen primary IPF versus NDC differential-expression analysis." width=100%}
+
+The volcano visualization is a presentation layer generated directly from the
+frozen W5 gene-level result. Differential expression, P values, adjusted
+P values, log fold changes, and gene classifications were not recomputed
+during W8.
+
+# Frozen W6 biological interpretation
+
+W6 translated the frozen differential-expression result into a controlled
+pathway-level biological interpretation.
+
+Three frozen evidence streams were evaluated:
+
+1. GO Biological Process over-representation analysis;
+2. Reactome over-representation analysis;
+3. GO Biological Process ranked enrichment.
+
+Interpretation was organized into eight controlled biological themes rather
+than allowing post hoc pathway selection to redefine the biological narrative.
+
+## Higher in IPF
+
+Strong convergent pathway-level support higher in IPF included:
+
+- **extracellular-matrix / collagen / fibrotic remodeling**, with support from
+  all three evidence streams;
+- **tissue-development / structural remodeling**, with support from all three
+  evidence streams;
+- **broad signalling or mixed processes requiring pathway-specific caution**,
+  with support from all three evidence streams;
+- **cilium / axoneme / microtubule-associated motility**, with support from two
+  evidence streams.
+
+The extracellular-matrix and structural-remodeling findings are consistent
+with a broad remodeling-associated transcriptomic pattern in IPF tissue.
+
+The broad-signalling category is intentionally interpreted cautiously because
+it aggregates heterogeneous pathway processes.
+
+## Lower in IPF
+
+Convergent pathway-level support lower in IPF included:
+
+- **mucosal / antimicrobial / innate immune response**;
+- **leukocyte / neutrophil-associated processes**;
+- **surfactant / lipid / sterol metabolism**;
+- **broad signalling or mixed processes requiring pathway-specific caution**.
+
+The **mitochondrial respiration / oxidative phosphorylation / ATP production**
+theme had support from a single frozen evidence stream and is therefore
+treated as contextual rather than convergent evidence.
+
+Some theme-direction combinations had no controlled pathway-level support.
+This is **not** interpreted as evidence that the underlying biology is absent.
+
+![Frozen W6 biological interpretation summarized across GO:BP ORA, Reactome ORA, and GO:BP ranked enrichment. Bubble area represents the number of frozen pathway-level findings supporting each controlled theme. Open circles denote zero pathway-level support and must not be interpreted as biological absence.](../figures/final/W8_biological_interpretation_matrix.png){fig-alt="Bubble matrix showing frozen pathway evidence for eight biological themes higher and lower in IPF." width=100%}
+
+These pathway-level findings are associative and descriptive. They do not
+establish causal mechanisms.
+
+No pathway was promoted, removed, re-ranked, or recalculated during W8.
+
+# Frozen W7 sensitivity and robustness
+
+W7 evaluated whether the frozen W5 IPF-vs-NDC result remained stable after two
+prespecified covariate adjustments:
+
+- continuous age;
+- gender.
+
+These analyses were sensitivity analyses, not replacements for the primary W5
+model.
+
+## Continuous-age adjustment
+
+After continuous-age adjustment:
+
+- 5,277 genes satisfied FDR < 0.05;
+- 5,015 of the original W5 FDR-significant genes remained significant;
+- W5 FDR retention was **0.6350**;
+- Pearson logFC agreement with W5 was **0.9656**;
+- Spearman logFC agreement was **0.9509**;
+- genome-wide directional concordance was **0.9127**;
+- median absolute change in logFC was **0.0710**;
+- the 95th percentile absolute change in logFC was **0.4072**;
+- shared-FDR directional concordance was **1.0000**.
+
+## Gender adjustment
+
+After gender adjustment:
+
+- 7,745 genes satisfied FDR < 0.05;
+- 7,596 of the original W5 FDR-significant genes remained significant;
+- W5 FDR retention was **0.9618**;
+- Pearson logFC agreement with W5 was **0.9946**;
+- Spearman logFC agreement was **0.9965**;
+- genome-wide directional concordance was **0.9885**;
+- median absolute change in logFC was **0.0086**;
+- the 95th percentile absolute change in logFC was **0.1110**;
+- shared-FDR directional concordance was **1.0000**.
+
+## Cross-sensitivity interpretation
+
+The two sensitivity analyses distinguish two different aspects of robustness.
+
+The **genome-wide effect pattern** remained strongly concordant with W5 under
+both adjustments.
+
+The **FDR-defined discovery set** was more sensitive to continuous-age
+adjustment than to gender adjustment.
+
+Importantly, genes significant in both the primary and sensitivity analyses
+retained complete directional concordance in both cases.
+
+Therefore, the reduced FDR retention after age adjustment should not be
+interpreted as reversal of the underlying transcriptomic pattern.
+
+![Frozen W7 robustness summary. Continuous-age and gender sensitivity analyses are compared with the W5 primary result across effect-pattern agreement, discovery-set stability, and effect-size perturbation.](../figures/final/W8_robustness_summary.png){fig-alt="Three-panel robustness visualization comparing continuous-age and gender sensitivity analyses with the frozen W5 result." width=100%}
+
+The W7 analyses support robustness of the principal W5 effect pattern to the
+evaluated adjustments while showing that threshold-defined discovery-set
+membership is more sensitive to continuous age.
+
+These analyses do not establish that age or gender has no biological or
+statistical influence.
+
+# Limitations
+
+Several limitations define the appropriate interpretation of this project.
+
+First, GSE213001 is a public observational dataset. The analysis identifies
+associations between disease status and transcriptomic measurements; it does
+not establish causality.
+
+Second, the data are bulk tissue RNA-seq. Observed transcriptional differences
+may therefore reflect both within-cell expression changes and differences in
+cellular composition. Cell-type-specific mechanisms cannot be resolved
+directly from this analysis.
+
+Third, repeated tissue samples are available for many donors. Donor-aware
+correlation modelling addresses the non-independence of repeated observations,
+but it does not remove all biological heterogeneity among individuals or lung
+regions.
+
+Fourth, the primary model intentionally prioritizes a prespecified and
+interpretable disease-plus-region structure. Other available clinical or
+technical variables may also contribute to transcriptomic variation.
+
+Fifth, membership in an FDR-defined gene set depends on statistical uncertainty
+and the chosen multiple-testing threshold. The W7 age sensitivity analysis
+illustrates why changes in discovery-set size must be interpreted separately
+from changes in the underlying genome-wide effect pattern.
+
+Sixth, pathway enrichment depends on existing gene-set definitions and pathway
+annotation. Lack of pathway-level support is not equivalent to evidence of
+biological absence.
+
+Finally, conclusions are specific to this dataset, analytical design, and
+frozen comparison. Generalization beyond GSE213001 requires independent
+validation.
+
+# Reproducibility information
+
+The project was developed as a version-controlled analysis using:
+
+- R;
+- Bioconductor;
+- `renv`;
+- `targets`;
+- Quarto;
+- Git;
+- GitHub.
+
+Raw/source data are preserved separately from processed analytical outputs.
+
+Analytical decisions are documented prospectively in `docs/DECISIONS.md`.
+
+The cohort and experimental design are documented in
+`docs/STUDY_DESIGN.md`.
+
+The early workflow is represented in `_targets.R`, while later analytical
+stages were frozen through explicit version-controlled scripts, outputs, QC
+records, commits, and analytical checkpoints.
+
+The existence of `_targets.R` should therefore not be interpreted as meaning
+that the W5-W8 results are regenerated automatically by `tar_make()`.
+
+This final Quarto report is deliberately a **reporting layer**. It embeds
+previously frozen outputs and does not execute statistical modelling,
+normalization, enrichment, or sensitivity analysis.
+
+The analytical provenance is:
+
+| Stage | Frozen role |
+|---|---|
+| W1-W4 | Data preparation, QC, filtering, normalization, ordination |
+| W5 | Primary donor-aware differential expression |
+| W6 | Controlled enrichment and biological interpretation |
+| W7 | Age and gender sensitivity analyses and robustness synthesis |
+| W8 | Portfolio visualization and final reporting |
+
+The final portfolio figures are stored under `figures/final/`, while their
+associated W8 QC records are stored under `metadata/`.
+
+# Final conclusions
+
+This project identifies a broad and reproducible transcriptomic distinction
+between IPF and non-diseased lung tissue in GSE213001 using a donor-aware
+analysis that explicitly accounts for repeated sampling and anatomical lung
+region.
+
+The frozen primary W5 analysis tested **15,012 genes** and identified
+**7,898 genes at FDR < 0.05**, divided almost evenly between genes higher and
+lower in IPF.
+
+Controlled W6 pathway interpretation highlighted convergent evidence for
+extracellular-matrix and structural-remodeling programs higher in IPF, while
+several immune, surfactant/lipid, and related programs showed pathway-level
+support lower in IPF. Broader signalling categories required
+pathway-specific caution, and lack of pathway support was not interpreted as
+biological absence.
+
+The prespecified W7 analyses showed that the principal genome-wide effect
+pattern remained strongly concordant after both continuous-age and gender
+adjustment. Gender adjustment produced only minor perturbation, whereas age
+adjustment had a larger impact on membership of the FDR-significant discovery
+set. In both sensitivity analyses, genes significant in both analyses retained
+complete directional concordance.
+
+Together, these results support the stability of the principal IPF-vs-NDC
+transcriptomic pattern while also demonstrating the importance of separating
+effect-pattern robustness from threshold-dependent discovery-set stability.
+
+The frozen W5 primary analysis remains the principal inferential reference.
+W6 provides its controlled biological interpretation, W7 provides its
+prespecified robustness assessment, and W8 communicates the completed analysis
+without altering its scientific conclusions.
