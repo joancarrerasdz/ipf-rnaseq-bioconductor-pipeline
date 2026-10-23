@@ -3878,3 +3878,364 @@ It will not:
 
 The purpose of W8.4 is communication of frozen robustness evidence, not
 additional statistical inference.
+
+
+###### 2026-10-23 — W8 final report specification
+
+**Status:** FROZEN BEFORE W8 FINAL REPORT AUTHORING
+
+W8.5 will assemble the completed GSE213001 IPF RNA-seq project into a final
+reproducible portfolio report.
+
+W8.5 is a reporting and communication layer.
+
+It will not introduce new statistical inference, biological hypothesis testing,
+sample exclusion, gene filtering, differential-expression modelling,
+enrichment analysis, sensitivity modelling, gene ranking, or biological
+reinterpretation.
+
+The frozen W5 primary differential-expression result remains the principal
+inferential reference.
+
+The frozen W6 biological interpretation remains the biological source of
+truth.
+
+The frozen W7 sensitivity and robustness results remain the robustness source
+of truth.
+
+The W8.2, W8.3, and W8.4 figures remain presentation layers derived from those
+frozen results.
+
+###### Canonical report source
+
+The canonical Quarto source document will be:
+
+`reports/analysis.qmd`
+
+The existing zero-byte file is treated as an empty placeholder and may now be
+populated during W8.5.
+
+The intended portfolio outputs are:
+
+- `reports/final_report.html`
+- `reports/final_report.pdf`
+
+HTML will be treated as the primary interactive portfolio deliverable.
+
+PDF will be treated as the portable static companion deliverable.
+
+If local PDF rendering requires an unavailable external dependency, this must
+be documented explicitly rather than changing analytical content or silently
+substituting a different report.
+
+###### Required report structure
+
+The final report will contain the following nine principal sections:
+
+1. Study objective and dataset
+2. Cohort and analytical design
+3. Quality-control overview
+4. Frozen W5 differential-expression results
+5. Frozen W6 biological interpretation
+6. Frozen W7 sensitivity and robustness
+7. Limitations
+8. Reproducibility information
+9. Final conclusions
+
+Additional short subsections may be introduced only to improve navigation and
+readability.
+
+They must not alter the analytical hierarchy defined above.
+
+###### Study objective and dataset
+
+The report will identify the public study as GEO accession GSE213001 and
+describe the project as a reproducible bulk RNA-seq analysis of idiopathic
+pulmonary fibrosis.
+
+The primary biological comparison remains:
+
+IPF versus non-diseased control lung tissue.
+
+The final report must distinguish the primary analysis from secondary,
+sensitivity, exploratory, and presentation-only components.
+
+No new study objective will be introduced in W8.5.
+
+###### Cohort and analytical design
+
+The final report will describe the frozen donor-aware analytical design.
+
+The primary frozen cohort contains:
+
+- 101 samples,
+- 34 donors.
+
+The primary fixed-effects structure is based on disease group and lung region.
+
+Dependence among repeated samples from the same donor is handled by the frozen
+donor-aware correlation modelling established before the W5 primary analysis.
+
+Age and gender sensitivity analyses must be described as prespecified
+robustness assessments rather than replacements for the primary model.
+
+The report must not redefine the primary cohort, contrast, reference group, or
+experimental design.
+
+###### Quality-control overview
+
+The quality-control section will summarize already completed QC and
+preprocessing steps, including:
+
+- metadata validation,
+- sample and donor alignment,
+- library-level QC,
+- technical-variable review,
+- low-count filtering,
+- TMM normalization,
+- PCA and MDS exploratory QC,
+- donor-aware design preparation.
+
+The frozen gene universe after filtering contains 15,012 genes.
+
+No sample or gene will be newly excluded during W8.5.
+
+No QC threshold will be changed.
+
+No normalization will be rerun for the purpose of report generation.
+
+###### Frozen W5 differential-expression results
+
+The principal quantitative differential-expression sources are:
+
+- `results/differential_expression/primary_IPF_vs_NDC_all_genes.csv`
+- `results/differential_expression/primary_IPF_vs_NDC_summary.csv`
+
+The final portfolio visualization is:
+
+- `figures/final/W8_primary_IPF_vs_NDC_volcano.png`
+- `figures/final/W8_primary_IPF_vs_NDC_volcano.pdf`
+
+The frozen W5 analysis contains:
+
+- 15,012 tested genes,
+- 7,898 genes satisfying FDR < 0.05,
+- 3,964 higher in IPF,
+- 3,934 lower in IPF.
+
+The significance criterion remains exactly:
+
+`FDR < 0.05`
+
+No additional effect-size significance threshold will be introduced.
+
+The report will not recompute differential expression, P values, adjusted
+P values, log fold changes, or gene classifications.
+
+###### Frozen W6 biological interpretation
+
+The biological interpretation sources are:
+
+- `results/interpretation/final/W6_final_biological_report.csv`
+- `results/interpretation/final/W6_final_biological_report.md`
+- `results/interpretation/final/W8_biological_evidence_matrix.csv`
+
+The final portfolio visualization is:
+
+- `figures/final/W8_biological_interpretation_matrix.png`
+- `figures/final/W8_biological_interpretation_matrix.pdf`
+
+The report will preserve the eight frozen W6 biological themes and their
+direction-specific interpretation.
+
+Evidence convergence may be summarized descriptively.
+
+Absence of pathway-level support must not be described as evidence of
+biological absence.
+
+W8.5 will not rerun GO:BP ORA, Reactome ORA, ranked enrichment, or any other
+pathway analysis.
+
+W8.5 will not introduce a new pathway taxonomy or reinterpret the frozen W6
+biological conclusions.
+
+###### Frozen W7 sensitivity and robustness
+
+The principal quantitative robustness source is:
+
+- `results/sensitivity/W7_combined_sensitivity_summary.csv`
+
+The frozen interpretive sources are:
+
+- `results/sensitivity/W7_combined_robustness_interpretation.csv`
+- `results/sensitivity/W7_combined_robustness_interpretation.md`
+
+The final portfolio visualization is:
+
+- `figures/final/W8_robustness_summary.png`
+- `figures/final/W8_robustness_summary.pdf`
+
+The report will distinguish:
+
+1. genome-wide effect-pattern agreement,
+2. FDR-defined discovery-set stability,
+3. effect-size perturbation.
+
+The report may state that the genome-wide effect pattern remains strongly
+concordant with frozen W5 under both evaluated adjustments.
+
+It may state that continuous-age adjustment changes FDR-defined discovery-set
+membership more substantially than gender adjustment.
+
+It may state that genes significant in both analyses retain complete
+directional concordance.
+
+It must not state that age has no effect, gender has no effect, or that a loss
+of FDR significance represents reversal of the underlying biological effect.
+
+No composite robustness score will be introduced.
+
+###### Figure policy
+
+The final report will embed the already frozen W8 portfolio figures.
+
+The report must not regenerate W8.2, W8.3, or W8.4 figures during ordinary
+report rendering.
+
+The canonical PNG files will be used for document embedding.
+
+The corresponding PDF files remain vector-quality standalone portfolio
+deliverables.
+
+Report rendering must not modify any figure source or QC record.
+
+###### Reporting computation boundary
+
+Executable report code, if used, may only:
+
+- read frozen CSV or text outputs,
+- select already frozen values,
+- format values for display,
+- construct presentation tables,
+- perform consistency assertions,
+- record software or session information.
+
+Executable report code must not:
+
+- fit a statistical model,
+- normalize counts,
+- filter genes,
+- remove samples,
+- calculate differential expression,
+- calculate enrichment statistics,
+- calculate sensitivity models,
+- calculate new P values,
+- calculate new adjusted P values,
+- create new inferential thresholds,
+- re-rank genes for inference,
+- change biological classifications.
+
+Presentation-only formatting is not considered analytical recomputation.
+
+###### Figure and result provenance
+
+The final report will explicitly preserve the analytical hierarchy:
+
+W1-W4:
+data ingestion, metadata validation, QC, filtering, normalization, and
+ordination.
+
+W5:
+primary donor-aware IPF-vs-NDC differential expression.
+
+W6:
+controlled enrichment and biological interpretation.
+
+W7:
+prespecified age and gender sensitivity analyses and combined robustness
+interpretation.
+
+W8:
+portfolio visualization, final reporting, reproducibility communication, and
+repository presentation.
+
+The report must not present W8 as a new inferential analysis stage.
+
+###### Limitations
+
+The final report will contain an explicit limitations section.
+
+It will distinguish limitations of:
+
+- the public observational dataset,
+- bulk tissue RNA-seq,
+- repeated tissue sampling,
+- available covariate information,
+- threshold-defined FDR discovery sets,
+- pathway annotation and enrichment interpretation,
+- generalizability beyond GSE213001.
+
+Limitations must not be used to rewrite or retrospectively alter frozen results.
+
+###### Reproducibility information
+
+The final report will document the computational framework used by the project,
+including:
+
+- R,
+- Bioconductor,
+- `renv`,
+- `targets`,
+- Quarto,
+- Git,
+- GitHub.
+
+The report will distinguish the early executable `targets` workflow from later
+analytical stages that were frozen and version-controlled independently.
+
+The existence of `_targets.R` must not be used to imply that W5-W8 are
+currently regenerated by `tar_make()`.
+
+The final report will not call `tar_make()`.
+
+Environment and repository provenance may be reported descriptively.
+
+###### Repository presentation policy
+
+README modernization will occur only after the final report has been
+successfully authored, rendered, visually reviewed, and frozen.
+
+The README update will therefore be a later W8 step.
+
+The current README must not be edited during initial report authoring.
+
+###### Final-report QC
+
+Before final report closure, QC must verify at minimum:
+
+- all nine required principal sections are present,
+- all three frozen W8 portfolio figures are present,
+- frozen W5 counts are reproduced correctly,
+- W6 biological interpretation boundaries are preserved,
+- W7 robustness values and interpretation boundaries are preserved,
+- frozen analytical source files remain unchanged,
+- report rendering succeeds for the required output format,
+- no unexpected files are generated,
+- Git worktree cleanliness is restored after commit,
+- `main` and `origin/main` are synchronized.
+
+A dedicated W8 final-report QC record will be created only after successful
+report rendering.
+
+###### Final interpretive boundary
+
+W8.5 is the synthesis of the completed project.
+
+It is not an opportunity to optimize results retrospectively.
+
+Scientific conclusions in the report must be traceable to previously frozen
+W5, W6, or W7 evidence.
+
+Any wording introduced during W8.5 may improve clarity, concision, navigation,
+or portfolio presentation, but it must not change the scientific meaning of
+the frozen analysis.
