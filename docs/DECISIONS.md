@@ -4239,3 +4239,190 @@ W5, W6, or W7 evidence.
 Any wording introduced during W8.5 may improve clarity, concision, navigation,
 or portfolio presentation, but it must not change the scientific meaning of
 the frozen analysis.
+
+###### 2026-10-23 — W8 portfolio repository presentation specification
+
+**Status:** FROZEN BEFORE README FINALIZATION
+
+W8.6 converts the analytically complete GSE213001 IPF RNA-seq project into a
+public-facing portfolio repository.
+
+This phase is strictly a presentation, navigation, documentation, and
+reproducibility layer.
+
+No differential-expression model, enrichment analysis, biological
+interpretation, sensitivity analysis, robustness statistic, P value,
+adjusted P value, gene classification, or frozen W5-W7 result will be
+recomputed or modified.
+
+The frozen W8 final report also remains unchanged.
+
+###### Primary README objective
+
+The repository README must allow a technically informed reader to understand
+the project without first navigating the full directory tree.
+
+The README will communicate the analytical story in the following order:
+
+1. scientific question,
+2. dataset and cohort,
+3. analytical design,
+4. principal frozen result,
+5. biological interpretation,
+6. sensitivity and robustness,
+7. final deliverables,
+8. reproducibility,
+9. repository structure,
+10. limitations and interpretation boundary.
+
+The README is a portfolio landing page, not a replacement for the full report.
+
+###### Scientific framing
+
+The project is a reproducible RNA-seq analysis of idiopathic pulmonary
+fibrosis using public GEO dataset GSE213001.
+
+The principal inferential comparison remains the frozen W5 IPF-vs-NDC
+donor-aware differential-expression analysis.
+
+The primary model accounts for lung region and donor correlation.
+
+The README must distinguish clearly between:
+
+- the frozen primary differential-expression result,
+- frozen W6 biological interpretation,
+- frozen W7 sensitivity and robustness analyses,
+- W8 reporting and presentation outputs.
+
+W8 must not be presented as a new analytical stage.
+
+###### Frozen headline numerical results
+
+The README may report the following already frozen quantities:
+
+- 15,012 genes tested,
+- 7,898 genes with FDR < 0.05,
+- 3,964 higher in IPF relative to NDC,
+- 3,934 lower in IPF relative to NDC.
+
+These values must be presented as outputs of the frozen W5 primary analysis.
+
+No additional effect-size significance threshold may be introduced.
+
+###### Portfolio visual hierarchy
+
+The README will use the three final W8 figures as the primary visual summary:
+
+1. `figures/final/W8_primary_IPF_vs_NDC_volcano.png`
+   - frozen W5 gene-level differential-expression result;
+
+2. `figures/final/W8_biological_interpretation_matrix.png`
+   - frozen W6 pathway-level biological interpretation;
+
+3. `figures/final/W8_robustness_summary.png`
+   - frozen W7 sensitivity and robustness summary.
+
+The README must not regenerate, recolour, relabel, re-rank, or otherwise
+modify these figures.
+
+###### Final report navigation
+
+The README must provide direct navigation to:
+
+- `reports/final_report.html`
+- `reports/final_report.pdf`
+
+The final report is the authoritative narrative synthesis of the completed
+analysis.
+
+The README must remain shorter and more portfolio-oriented than the final
+report.
+
+###### Reproducibility presentation
+
+The README will describe the existing reproducibility infrastructure rather
+than inventing a new execution system.
+
+Existing infrastructure includes:
+
+- R-based analytical scripts,
+- `renv` environment management,
+- `_targets.R` workflow orchestration,
+- `.Rprofile`,
+- frozen intermediate and final analytical outputs,
+- explicit QC metadata,
+- versioned Git checkpoints.
+
+Reproducibility instructions must distinguish between:
+
+1. restoring the computational environment,
+2. running the analytical workflow when appropriate,
+3. inspecting already frozen final outputs.
+
+No claim of containerized reproducibility will be made because no Dockerfile
+is currently part of the project.
+
+No claim of Conda-based reproducibility will be made because no
+`environment.yml` is currently part of the project.
+
+###### Repository navigation
+
+The final README must explain the role of the principal directories:
+
+- `R/` — analytical and reporting scripts,
+- `metadata/` — QC and provenance records,
+- `results/` — analytical outputs,
+- `figures/` — analytical and final portfolio figures,
+- `reports/` — Quarto source and final rendered report,
+- `docs/` — analytical decisions and project documentation.
+
+Only high-value paths will be surfaced in the main README.
+
+The README will not attempt to catalogue every intermediate file.
+
+###### Portfolio communication standard
+
+The README must prioritize:
+
+- scientific clarity,
+- reproducibility,
+- traceability,
+- concise interpretation,
+- visual readability,
+- direct access to final deliverables.
+
+Internal W4-W8 execution chronology may be summarized where useful but must
+not dominate the public-facing narrative.
+
+The README should read as a completed project rather than an active work log.
+
+###### Interpretation boundary
+
+The README must not imply that:
+
+- age has no biological or statistical influence,
+- gender has no biological or statistical influence,
+- every FDR-significant gene represents a biologically meaningful effect,
+- absence of pathway-level support demonstrates biological absence,
+- robustness analyses replace the frozen primary model.
+
+Sensitivity analyses evaluate robustness of the frozen primary result under
+prespecified covariate adjustments.
+
+The frozen W5 primary analysis remains the principal inferential reference.
+
+###### Final portfolio quality gate
+
+Before W8 is closed, the repository must satisfy all of the following:
+
+- README functions as a complete portfolio landing page;
+- frozen W5-W7 results remain unchanged;
+- W8 final report remains unchanged;
+- all three final figures remain unchanged;
+- README links to final report and key figures resolve;
+- reproducibility infrastructure is documented accurately;
+- repository structure is understandable to a new reader;
+- no temporary or accidental portfolio files remain;
+- worktree is clean;
+- HEAD equals origin/main;
+- final W8 checkpoint is tagged only after repository-level QA passes.
