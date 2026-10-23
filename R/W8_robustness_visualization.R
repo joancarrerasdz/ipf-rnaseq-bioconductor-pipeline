@@ -637,11 +637,13 @@ p <- ggplot(
     colour = "Sensitivity adjustment",
 
     caption = paste0(
-      "Agreement and discovery-set metrics retain their ",
-      "natural 0-1 scale; |delta logFC| metrics are shown ",
-      "in logFC units. Shared-FDR direction concordance ",
-      "is 1.000 for both analyses. No composite robustness ",
-      "score or new statistical threshold was introduced."
+      "Agreement and discovery-set metrics use natural 0-1 scales ",
+      "(higher = stronger agreement).\n",
+      "|delta logFC| metrics are shown in logFC units ",
+      "(lower = less perturbation).\n",
+      "Shared-FDR direction concordance is 1.000 for both analyses.\n",
+      "No composite robustness score or new statistical threshold ",
+      "was introduced."
     )
   ) +
 
