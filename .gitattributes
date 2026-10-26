@@ -1,0 +1,3 @@
+# Generated portfolio report.
+# Keep the HTML deliverable tracked, but exclude it from GitHub language statistics.
+reports/final_report.html linguist-generated=true

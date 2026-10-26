@@ -17,8 +17,6 @@ data/source/*
 !data/source/.gitkeep
 
 # FASTQ demonstration data
-fastq-demo/data/
-fastq-demo/results/
 
 # Quarto generated output
 reports/_freeze/
