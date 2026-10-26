@@ -197,6 +197,51 @@ expression model or rerun the frozen W6/W7 inferential analyses.
 The final portfolio figures are presentation-oriented summaries generated from
 previously frozen analytical outputs.
 
+### Requirements
+
+The reproducible R environment recorded by the project uses **R 4.5.1**.
+
+A fresh environment requires:
+
+- R compatible with the version recorded in `renv.lock`;
+- Git;
+- internet access for restoring R packages and obtaining the public GEO inputs;
+- Quarto only if the report source is to be rendered again.
+
+### Quick start
+
+Clone the repository and enter the project directory.
+
+Restore the recorded R package environment:
+
+```r
+renv::restore()
+```
+
+The tracked source-data directory intentionally does not contain the public
+source files themselves. Before running the target graph, obtain the two
+GSE213001 source files documented in `data/README.md` and place them under
+`data/source/` with the expected filenames.
+
+The project-level target graph can then be executed with:
+
+```r
+targets::tar_make()
+```
+
+The current `_targets.R` definition reconstructs the reproducible W1-W4
+foundation of the project: source-data validation, import and metadata
+alignment, quality control, filtering, normalization, and ordination QC.
+
+The later W5-W8 analytical and reporting stages are preserved as versioned
+scripts, frozen result tables, QC records, figures, and final reports. They are
+not presented as a one-command automatic rebuild through the current
+`_targets.R` graph.
+
+This distinction is intentional: the repository preserves both executable
+pipeline infrastructure and the frozen analytical checkpoints used for the
+final portfolio interpretation.
+
 ---
 
 ## Repository structure
@@ -206,7 +251,7 @@ The principal repository directories are:
 | Directory | Purpose |
 |---|---|
 | `R/` | Analytical and reporting scripts |
-| `data_processed/` | Processed analytical data objects |
+| `data/` | Public-source data landing area and data-acquisition documentation |
 | `metadata/` | QC, provenance, mapping, and audit records |
 | `results/` | Differential-expression, enrichment, interpretation, and sensitivity results |
 | `figures/` | Analytical and final portfolio figures |
