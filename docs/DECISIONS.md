@@ -4426,3 +4426,126 @@ Before W8 is closed, the repository must satisfy all of the following:
 - worktree is clean;
 - HEAD equals origin/main;
 - final W8 checkpoint is tagged only after repository-level QA passes.
+
+###### 2026-10-26 — Post-W8 portfolio repository hygiene specification
+
+**Status:** FROZEN BEFORE POST-W8 PORTFOLIO CLEANUP
+
+The analytical and reporting phase of the project was closed at the
+`w8-complete` checkpoint.
+
+All work defined below is strictly repository presentation,
+documentation, navigation, and hygiene.
+
+No frozen W5-W8 scientific result will be recomputed, re-ranked,
+reclassified, or reinterpreted.
+
+The `w8-complete` tag will remain unchanged as the analytical and
+reporting closure checkpoint.
+
+###### Scientific boundary
+
+The following remain frozen:
+
+- W5 primary donor-aware IPF-vs-NDC differential-expression result;
+- W6 biological interpretation;
+- W7 age and gender sensitivity and robustness analyses;
+- W8 final figures;
+- W8 final HTML/PDF report;
+- frozen numerical results and inferential thresholds.
+
+No differential-expression model, enrichment analysis, sensitivity
+model, P value, adjusted P value, effect estimate, gene classification,
+pathway result, or robustness statistic will be recomputed during
+post-W8 repository cleanup.
+
+The W8 final report will not be rerendered as part of repository hygiene.
+
+###### Files to retain unchanged
+
+The final analytical deliverables, reproducibility infrastructure,
+results, figures, reports, metadata, and active analytical scripts will
+be retained.
+
+In particular, the following final portfolio deliverables remain frozen:
+
+- `figures/final/W8_primary_IPF_vs_NDC_volcano.png`
+- `figures/final/W8_primary_IPF_vs_NDC_volcano.pdf`
+- `figures/final/W8_biological_interpretation_matrix.png`
+- `figures/final/W8_biological_interpretation_matrix.pdf`
+- `figures/final/W8_robustness_summary.png`
+- `figures/final/W8_robustness_summary.pdf`
+- `reports/final_report.html`
+- `reports/final_report.pdf`
+- `reports/analysis.qmd`
+
+###### Documentation updates
+
+`README.md` will be updated only to improve public-facing repository
+navigation and reproducibility documentation.
+
+Permitted README changes include:
+
+- correction of directory references that do not match the final repository;
+- addition of a concise reproducibility / quick-start section;
+- clarification of final deliverables and repository navigation;
+- presentation-only wording improvements.
+
+`data/README.md` will be updated from preliminary future-tense planning
+language to documentation of the completed project state.
+
+These documentation updates must not alter the scientific meaning of
+the frozen analyses.
+
+###### Repository hygiene removals
+
+The following zero-byte or unused scaffolding files may be removed:
+
+- `R/design.R`
+- `R/enrichment.R`
+- `R/visualization.R`
+- `fastq-demo/README.md`
+- `config/.gitkeep`
+
+If removal leaves `fastq-demo/` or `config/` empty, those directories
+will disappear from the tracked repository.
+
+Obsolete `.gitignore` entries referring only to removed scaffolding may
+also be removed.
+
+No active analytical file may be deleted.
+
+###### GitHub language classification
+
+A `.gitattributes` file will be added so that generated final-report
+HTML does not dominate GitHub language statistics.
+
+The generated report will remain tracked as a portfolio deliverable.
+
+###### License boundary
+
+No software license will be added automatically during repository
+cleanup.
+
+Licensing will be treated as a separate explicit portfolio decision.
+
+###### GitHub presentation metadata
+
+After repository-file cleanup is completed and verified, GitHub-level
+presentation may include:
+
+- repository topics;
+- a final portfolio release;
+- a semantic portfolio version such as `v1.0.0`;
+- optional publication of the rendered HTML report through GitHub Pages.
+
+These actions are presentation metadata and do not alter the frozen
+scientific analysis.
+
+###### Final portfolio boundary
+
+Post-W8 cleanup exists only to make the completed project easier to
+understand, reproduce, navigate, and evaluate.
+
+The `w8-complete` checkpoint remains the immutable analytical and
+reporting closure reference.
