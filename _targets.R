@@ -73,6 +73,12 @@ list(
     format = "file"
   ),
 
+  tar_target(
+    differential_expression_script,
+    "R/differential_expression.R",
+    format = "file"
+  ),
+
   # ------------------------------------------------------------------
   # W1-W2: IMPORT + METADATA ALIGNMENT
   # ------------------------------------------------------------------
@@ -157,6 +163,29 @@ list(
           "figures/qc/pca_rin.png",
           "figures/qc/mds_disease_region.png",
           "figures/qc/mds_technical_watchlist.png"
+        )
+      )
+    },
+    format = "file"
+  ),
+
+  # ------------------------------------------------------------------
+  # W5: FROZEN PRIMARY DONOR-AWARE DIFFERENTIAL EXPRESSION
+  # ------------------------------------------------------------------
+
+  tar_target(
+    w5_primary_de_outputs,
+    {
+      raw_counts_source
+      import_outputs
+      normalization_outputs
+      differential_expression_script
+
+      run_stage(
+        differential_expression_script,
+        c(
+          "results/differential_expression/primary_IPF_vs_NDC_all_genes.csv",
+          "results/differential_expression/primary_IPF_vs_NDC_summary.csv"
         )
       )
     },
