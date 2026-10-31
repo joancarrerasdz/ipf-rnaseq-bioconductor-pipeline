@@ -242,8 +242,7 @@ lines <- c(
   paste(
     "No pathway was promoted, removed, re-ranked, or declared",
     "biologically absent during final reporting."
-  ),
-  ""
+  )
 )
 
 writeLines(

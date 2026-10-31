@@ -354,3 +354,37 @@ MSc Bioinformatics & Biostatistics
 
 Portfolio project focused on reproducible biomedical data science,
 bioinformatics, biostatistics, and translational life-science analytics.
+
+---
+
+## Clean-room reproducibility
+
+The complete W1-W8 workflow is orchestrated with `targets`, and its R package
+environment is recorded with `renv`.
+
+The public GSE213001 source files are intentionally not versioned in Git.
+Acquire them as documented in [`data/README.md`](data/README.md) before
+running the workflow.
+
+With R 4.5.1 and Quarto available:
+
+```r
+source("renv/activate.R")
+renv::restore(prompt = FALSE)
+
+library(targets)
+tar_make()
+```
+
+A formal clean-room validation from a fresh clone reconstructed all 65 targets,
+returned the complete W1-W8 graph to a current state, reproduced tracked
+scientific CSV/Markdown outputs byte-for-byte, and verified downstream
+dependency invalidation from source-input changes.
+
+The complete QA evidence, including report-equivalence and checkpoint
+verification, is documented in
+[`docs/qa/P2-16_reproducibility_evidence.md`](docs/qa/P2-16_reproducibility_evidence.md).
+
+Renderer-dependent HTML/PDF/PNG binary differences may occur across rendering
+environments. Scientific content, numerical content, dependency structure and
+frozen interpretation are required to remain unchanged.
