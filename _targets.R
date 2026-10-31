@@ -26,6 +26,44 @@ run_stage <- function(script, outputs) {
   outputs
 }
 
+
+run_quarto_report <- function(source, outputs) {
+
+  message("Rendering final portfolio report: ", source)
+
+  quarto <- Sys.which("quarto")
+
+  if (!nzchar(quarto)) {
+    stop("Quarto executable not found.")
+  }
+
+  status <- system2(
+    quarto,
+    c(
+      "render",
+      source
+    )
+  )
+
+  if (!identical(status, 0L)) {
+    stop(
+      "Quarto rendering failed with status ",
+      status
+    )
+  }
+
+  missing_outputs <- outputs[!file.exists(outputs)]
+
+  if (length(missing_outputs) > 0L) {
+    stop(
+      "Quarto did not create expected output(s): ",
+      paste(missing_outputs, collapse = ", ")
+    )
+  }
+
+  outputs
+}
+
 list(
 
   # ------------------------------------------------------------------
@@ -777,6 +815,154 @@ list(
           "results/sensitivity/W7_combined_robustness_interpretation.csv",
           "results/sensitivity/W7_combined_robustness_interpretation.md",
           "metadata/qc_W7_combined_robustness_interpretation.csv"
+        )
+      )
+    },
+    format = "file"
+  ),
+
+  # ------------------------------------------------------------------
+  # W8: PORTFOLIO VISUALIZATION AND FINAL REPORTING
+  #
+  # W8 consumes frozen W5-W7 analytical outputs.
+  # It does not redefine scientific inference.
+  # ------------------------------------------------------------------
+
+  tar_target(
+    w8_primary_visualization_script,
+    "R/W8_primary_de_visualization.R",
+    format = "file"
+  ),
+
+  tar_target(
+    w8_biological_evidence_matrix_script,
+    "R/W8_biological_evidence_matrix.R",
+    format = "file"
+  ),
+
+  tar_target(
+    w8_biological_visualization_script,
+    "R/W8_biological_interpretation_visualization.R",
+    format = "file"
+  ),
+
+  tar_target(
+    w8_robustness_visualization_script,
+    "R/W8_robustness_visualization.R",
+    format = "file"
+  ),
+
+  tar_target(
+    w8_final_report_source,
+    "reports/analysis.qmd",
+    format = "file"
+  ),
+
+  # W5 presentation layer --------------------------------------------
+
+  tar_target(
+    w8_primary_visualization_outputs,
+    {
+      w5_primary_de_outputs
+      w6_annotation_mapping_outputs
+      w8_primary_visualization_script
+
+      run_stage(
+        w8_primary_visualization_script,
+        c(
+          "figures/final/W8_primary_IPF_vs_NDC_volcano.png",
+          "figures/final/W8_primary_IPF_vs_NDC_volcano.pdf",
+          "metadata/qc_W8_primary_DE_visualization_labels.csv",
+          "metadata/qc_W8_primary_DE_visualization.csv"
+        )
+      )
+    },
+    format = "file"
+  ),
+
+  # W6 structured evidence layer -------------------------------------
+
+  tar_target(
+    w8_biological_evidence_matrix_outputs,
+    {
+      w6_final_biological_report_outputs
+      w8_biological_evidence_matrix_script
+
+      run_stage(
+        w8_biological_evidence_matrix_script,
+        c(
+          "results/interpretation/final/W8_biological_evidence_matrix.csv",
+          "metadata/qc_W8_biological_evidence_matrix.csv"
+        )
+      )
+    },
+    format = "file"
+  ),
+
+  tar_target(
+    w8_biological_visualization_outputs,
+    {
+      w8_biological_evidence_matrix_outputs
+      w8_biological_visualization_script
+
+      run_stage(
+        w8_biological_visualization_script,
+        c(
+          "figures/final/W8_biological_interpretation_matrix.png",
+          "figures/final/W8_biological_interpretation_matrix.pdf",
+          "metadata/qc_W8_biological_interpretation_visualization.csv"
+        )
+      )
+    },
+    format = "file"
+  ),
+
+  # W7 robustness presentation layer ---------------------------------
+
+  tar_target(
+    w8_robustness_visualization_outputs,
+    {
+      w7_combined_sensitivity_outputs
+      w7_combined_robustness_outputs
+      w8_robustness_visualization_script
+
+      run_stage(
+        w8_robustness_visualization_script,
+        c(
+          "figures/final/W8_robustness_summary.png",
+          "figures/final/W8_robustness_summary.pdf",
+          "metadata/qc_W8_robustness_visualization.csv"
+        )
+      )
+    },
+    format = "file"
+  ),
+
+  # Final report ------------------------------------------------------
+  #
+  # reports/analysis.qmd has execute.enabled = false.
+  # Quarto therefore consumes frozen scientific outputs and W8
+  # presentation figures without rerunning analytical models.
+
+  tar_target(
+    w8_final_report_outputs,
+    {
+      w5_primary_de_outputs
+      w6_final_biological_report_outputs
+      w7_combined_robustness_outputs
+
+      w8_primary_visualization_outputs
+      w8_biological_evidence_matrix_outputs
+      w8_biological_visualization_outputs
+      w8_robustness_visualization_outputs
+
+      w8_final_report_source
+
+      run_quarto_report(
+        w8_final_report_source,
+        c(
+          "reports/final_report.html",
+          "reports/final_report.pdf"
         )
       )
     },
