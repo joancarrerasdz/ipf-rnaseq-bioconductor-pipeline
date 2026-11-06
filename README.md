@@ -229,18 +229,28 @@ The project-level target graph can then be executed with:
 targets::tar_make()
 ```
 
-The current `_targets.R` definition reconstructs the reproducible W1-W4
-foundation of the project: source-data validation, import and metadata
-alignment, quality control, filtering, normalization, and ordination QC.
+The current `_targets.R` definition orchestrates the complete W1-W8
+workflow, from source-data validation and preprocessing through differential
+expression, biological interpretation, sensitivity analysis, final
+visualization, and report reconstruction.
 
-The later W5-W8 analytical and reporting stages are preserved as versioned
-scripts, frozen result tables, QC records, figures, and final reports. They are
-not presented as a one-command automatic rebuild through the current
-`_targets.R` graph.
+Formal clean-room validation performed on 2026-10-31 reconstructed all
+**65/65 targets** from a fresh clone after restoring the committed `renv`
+environment, with **0 outdated targets** remaining after the build.
 
-This distinction is intentional: the repository preserves both executable
-pipeline infrastructure and the frozen analytical checkpoints used for the
-final portfolio interpretation.
+The dependency graph includes the W1-W4 analytical foundation, the frozen W5
+donor-aware differential-expression analysis, W6 annotation/enrichment and
+biological interpretation, W7 continuous-age and gender sensitivity and
+robustness analyses, and W8 final visualization and reporting.
+
+Integration into `targets` does not redefine the frozen scientific results.
+The historical W6-W8 checkpoints remain preserved, and tracked scientific
+CSV/Markdown outputs reproduced byte-for-byte during clean-room validation.
+
+A controlled source-input change also demonstrated downstream invalidation
+across W5-W8; exact restoration of the input returned the complete graph to a
+current state. Full validation evidence is available in
+[`docs/qa/P2-16_reproducibility_evidence.md`](docs/qa/P2-16_reproducibility_evidence.md).
 
 ---
 
