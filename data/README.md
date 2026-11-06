@@ -21,6 +21,25 @@ anatomical lung regions. The primary model therefore accounts for lung region
 and within-donor correlation rather than treating every sample as an
 independent biological replicate.
 
+## Data access and reuse
+
+GSE213001 is accessed through the **NCBI Gene Expression Omnibus (GEO)** as
+publicly available research data. The repository records the GEO accession,
+source URLs, download date, file sizes and SHA-256 checksums in
+`data/provenance.tsv`.
+
+The project does not redistribute the downloaded GEO source files. Users who
+wish to reproduce the workflow must obtain them directly from NCBI GEO using
+the documented source URLs.
+
+Use and reuse of the source data remain subject to the applicable
+**NCBI/GEO data-use policies and the conditions associated with the original
+GSE213001 study**. The repository's software/code license does not replace or
+relicense the underlying public study data.
+
+The source files used for this portfolio analysis were retrieved on
+**2026-09-10**.
+
 ## Source files used by the workflow
 
 The tracked `_targets.R` workflow expects the following public GSE213001 files:
